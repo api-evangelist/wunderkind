@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: Wunderkind Email Ucrm API
+  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
+
+
+    ## Features
+
+    - Send emails to multiple recipients
+
+    - HTML and plain text support
+
+    - Custom sender information
+
+    - Reply-to configuration
+
+    - Bearer token authentication
+
+
+    ## Rate Limits
+
+    - 1000 requests per minute per API key
+
+
+    ## Support
+
+    For technical support, please contact our API team.
+
+    '
+  version: 1.0.0
+servers:
+- url: https://api.wunderkind.co
+  description: Production server
+tags:
+- name: Ucrm
+paths:
+  /ucrm/v1/unsubscribe:
+    put:
+      summary: unsubscribe a list of users. meant for clients to hit directly
+      operationId: external_unsubscribe
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: apikey {apikey}
+          enum:
+          - apikey {apikey}
+        description: This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/
+        required: true
+      requestBody:
+        description: The request body is a website_id followed by a list of email addresses to be unsubscribed
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                website_id:
+                  type: string
+                id_type:
+                  type: string
+                  default: email
+                  enum:
+                  - email
+                ids:
+                  type: array
+                  description: list of email addresses
+                  items:
+                    type: string
+              required:
+              - ids
+              example:
+                website_id: '1234'
+                id_type: email
+                ids:
+                - test@example.com
+                - fry@planetexpress.com
+      responses:
+        '201':
+          description: emails successfully unsubscribed with failed ids returned in body
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Application Error
+      tags:
+      - Ucrm
+  /ucrm/v1/subscribe:
+    put:
+      summary: subscribe a list of users. meant for clients to hit directly
+      operationId: external_subscribe
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: apikey {apikey}
+          enum:
+          - apikey {apikey}
+        description: This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/
+        required: true
+      requestBody:
+        description: The request body is a website_id followed by a list of email addresses to be subscribed
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                website_id:
+                  type: string
+                id_type:
+                  type: string
+                  default: email
+                  enum:
+                  - email
+                ids:
+                  type: array
+                  description: list of email addresses
+                  items:
+                    type: string
+              required:
+              - ids
+              example:
+                website_id: '1234'
+                id_type: email
+                ids:
+                - test@example.com
+                - fry@planetexpress.com
+      responses:
+        '201':
+          description: emails successfully subscribed with failed ids returned in body
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Application Error
+      tags:
+      - Ucrm
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication

@@ -1,0 +1,242 @@
+openapi: 3.0.3
+info:
+  title: Wunderkind Email Id Resolution API
+  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
+
+
+    ## Features
+
+    - Send emails to multiple recipients
+
+    - HTML and plain text support
+
+    - Custom sender information
+
+    - Reply-to configuration
+
+    - Bearer token authentication
+
+
+    ## Rate Limits
+
+    - 1000 requests per minute per API key
+
+
+    ## Support
+
+    For technical support, please contact our API team.
+
+    '
+  version: 1.0.0
+servers:
+- url: https://api.wunderkind.co
+  description: Production server
+tags:
+- name: Id Resolution
+paths:
+  /id-resolution/v1/identity/lookup/batch:
+    post:
+      description: ''
+      operationId: post_id-resolutionv1identitylookupbatch
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      properties:
+                        device_id:
+                          type: string
+                          default: '123456789'
+                        email:
+                          type: string
+                          description: Sha256 email hash
+                          default: b36a83701f1c3191e19722d6f90274bc1b5501fe69ebf33313e440fe4b0fe210
+                      type: object
+                required:
+                - results
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: apikey {apikey}
+          enum:
+          - apikey {apikey}
+        description: This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. See https://developer.wunderkind.co/docs/authenticate-api-requests#/
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                website_id:
+                  type: string
+                  description: The website ID that the lookup will be performed for.
+                device_ids:
+                  type: string
+                  description: A list of WKND device IDs (at least one). Each item should be a valid deviceID.
+              required:
+              - website_id
+              - device_ids
+      tags:
+      - Id Resolution
+  /id-resolution/v1/identity/enckey:
+    post:
+      description: ''
+      operationId: post_id-resolutionv1identityenckey
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key_base64:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '404':
+          description: Not Found
+          content: {}
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+        description: This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. See https://developer.wunderkind.co/docs/authenticate-api-requests#/
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      x-readme:
+        code-samples:
+        - code: ''
+          language: shell
+          name: ''
+        samples-languages:
+        - shell
+      tags:
+      - Id Resolution
+    get:
+      description: ''
+      operationId: get_id-resolutionv1identityenckey
+      responses:
+        '200':
+          description: ''
+      parameters: []
+      tags:
+      - Id Resolution
+  //id-resolution/v1/identity/enckey:
+    get:
+      description: ''
+      operationId: get_id-resolutionv1identityenckey
+      responses:
+        '200':
+          description: ''
+      parameters: []
+      tags:
+      - Id Resolution
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication

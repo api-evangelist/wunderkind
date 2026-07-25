@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Wunderkind Email Wunderhook API
+  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
+
+
+    ## Features
+
+    - Send emails to multiple recipients
+
+    - HTML and plain text support
+
+    - Custom sender information
+
+    - Reply-to configuration
+
+    - Bearer token authentication
+
+
+    ## Rate Limits
+
+    - 1000 requests per minute per API key
+
+
+    ## Support
+
+    For technical support, please contact our API team.
+
+    '
+  version: 1.0.0
+servers:
+- url: https://api.wunderkind.co
+  description: Production server
+tags:
+- name: Wunderhook
+paths:
+  /:
+    post:
+      summary: New Endpoint
+      description: This is your first endpoint! Edit this page to start documenting your API.
+      operationId: get_new-endpoint
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                Recipient:
+                  type: string
+                  description: 'The email address or phone number of the recipient. '
+                RecipientSha256:
+                  type: string
+                  description: The SHA256 encoded string of the recipient, lowercased before hashing. Required if Recipient is not submitted.
+                WkPurpose:
+                  type: string
+                  default: ''
+                  description: the purpose for this signal (cart abandonment, category abandonment, low stock, etc.)
+                WkChannel:
+                  type: string
+                  description: the recommended channel (email, text, etc.)
+                WkUserType:
+                  type: string
+                  description: the recommended target (customer, prospect, all)
+                WkCartReplenishUrl:
+                  type: string
+                  description: the url to drive user back to their cart (if applicable)
+                WkCouponCode:
+                  type: string
+                  description: coupon code to serve (if applicable)
+                WkCouponPurpose:
+                  type: string
+                  description: coupon code purpose (ie - "Get 20% off") (if applicable)
+                WkItems:
+                  type: array
+                  items:
+                    properties:
+                      WkId:
+                        type: string
+                        description: Unique product identifier id
+                      WkCopy:
+                        type: string
+                        description: Product name or short description
+                      WkImageUrl:
+                        type: string
+                        description: Product image URL
+                      WkUrl:
+                        type: string
+                        description: Product page URL
+                      WkPrice:
+                        type: string
+                        description: Original price
+                      WkSalePrice:
+                        type: string
+                        description: Sale price
+                      WkQuantity:
+                        type: string
+                        description: Number of items remaining in stock quantity
+                      WkAdditionalProperties:
+                        type: array
+                        items:
+                          properties:
+                            key:
+                              type: string
+                              description: The key for the additional property
+                            value:
+                              type: string
+                              description: The value for the additional property
+                          type: object
+                        description: Extension properties for the Signals Webhook that can be added during conversations with Wunderkind
+                    type: object
+                    required:
+                    - WkId
+                    - WkCopy
+                    - WkImageUrl
+                    - WkUrl
+                  description: List of cart items/product recommendations (Max 4 are returned)
+                WkAdditionalProperties:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                        description: The key for the additional property
+                      value:
+                        type: string
+                        description: The value for the additional property
+                    type: object
+                  description: Extension properties for the Signals Webhook that can be added during conversations with Wunderkind
+              type: object
+              required:
+              - WkPurpose
+              - WkChannel
+              - WkUserType
+            examples:
+              Sample Request:
+                summary: Sample Request
+                value:
+                  Recipient: to@example.com
+                  RecipientSha256: 01ebc948fa4c500ca1dc7b235ea2cadea0e534fe15d7035a1b31ae9d8a00029b
+                  Origin: wunderkind
+                  UserType: prospect
+                  WkChannel: email
+                  WkPurpose: cart abandonment
+                  WKCouponCode: ''
+                  WKCouponPurpose: ''
+                  WkCartReplenishUrl: some-url.com
+                  WkItems:
+                  - WkCopy: Product name
+                    WkId: '012345'
+                    WkImageUrl: some-url.jpg
+                    WkUrl: some-url.com
+                    WkPrice: '34.77'
+                    WkSalePrice: '24.77'
+                    WkQuantity: '12'
+                  - WkCopy: Product name
+                    WkId: '012345'
+                    WkImageUrl: some-url.jpg
+                    WkUrl: some-url.com
+                    WkAdditionalProperties:
+                    - key: CategoryName
+                      value: Toys
+                  - WkCopy: Product name
+                    WkId: '012345'
+                    WkImageUrl: some-url.jpg
+                    WkUrl: some-url.com
+                  - WkCopy: Product name
+                    WkId: '012345'
+                    WkImageUrl: some-url.jpg
+                    WkUrl: some-url.com
+                  WkAdditionalProperties:
+                  - key: CategoryName
+                    value: Toys
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        description: Optionally include an authorization header to ensure only valid users are accessing your endpoint. Currently, `Bearer` and `Basic` are supported types of authorization.
+        schema:
+          type: string
+          default: ''
+      tags:
+      - Wunderhook
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication

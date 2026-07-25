@@ -1,0 +1,312 @@
+openapi: 3.0.3
+info:
+  title: Wunderkind Email Identity API
+  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
+
+
+    ## Features
+
+    - Send emails to multiple recipients
+
+    - HTML and plain text support
+
+    - Custom sender information
+
+    - Reply-to configuration
+
+    - Bearer token authentication
+
+
+    ## Rate Limits
+
+    - 1000 requests per minute per API key
+
+
+    ## Support
+
+    For technical support, please contact our API team.
+
+    '
+  version: 1.0.0
+servers:
+- url: https://api.wunderkind.co
+  description: Production server
+tags:
+- name: Identity
+paths:
+  //v1/identity/lookup:
+    post:
+      description: ''
+      operationId: get_v1identitylookup
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  external_id:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      encryption_key_name:
+                        type: string
+                    required:
+                    - id
+                    - name
+                required:
+                - external_id
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    external_id:
+                      id: string
+                      name: encrypted_email_hash
+                      encryption_key_name: string
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+      parameters:
+      - in: header
+        name: Content-Type
+        schema:
+          type: string
+        description: Must be application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - type: object
+                properties:
+                  device_id:
+                    type: string
+                    description: ''
+                  website_id:
+                    type: string
+                    description: ''
+                  external_id_type:
+                    type: string
+                    enum:
+                    - encrypted_email_hash
+                    - '{client-specific}'
+                required:
+                - device_id
+                - website_id
+                - external_id_type
+                title: Lookup by device id
+              - type: object
+                properties:
+                  email_hash:
+                    type: string
+                  website_id:
+                    type: string
+                  external_id_type:
+                    type: string
+                    enum:
+                    - encrypted_email_hash
+                    - '{client-specific}'
+                required:
+                - email_hash
+                - website_id
+                - external_id_type
+                title: Lookup by email hash
+              - type: object
+                properties:
+                  soft_id:
+                    type: string
+                  website_id:
+                    type: string
+                  external_id_type:
+                    type: string
+                    enum:
+                    - encrypted_email_hash
+                    - '{client-specific}'
+                required:
+                - soft_id
+                - website_id
+                - external_id_type
+                title: Lookup by soft id
+      x-readme:
+        code-samples:
+        - code: "curl -X POST /v1/identity/lookup \\  \n  -H 'Content-Type: application/json' \\  \n  -d '{  \n     \"website_id\": \"1234\",\n     \"external_id_type\": \"crm_id\",\n     \"device_id\": \"123456789\"\n}'"
+          language: shell
+          name: ''
+        samples-languages:
+        - shell
+      tags:
+      - Identity
+  /v1/identity/lookup:
+    servers:
+    - url: https://localhost:8081
+      description: Identity Lookup API is an internal API
+    post:
+      description: ''
+      operationId: post_v1identitylookup
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  external_id:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      encryption_key_name:
+                        type: string
+                    required:
+                    - id
+                    - name
+                required:
+                - external_id
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    external_id:
+                      id: string
+                      name: encrypted_email_hash
+                      encryption_key_name: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+        '404':
+          description: Identity not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+      parameters:
+      - in: header
+        name: Content-Type
+        schema:
+          type: string
+        description: Must be application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - type: object
+                properties:
+                  device_id:
+                    type: string
+                    description: ''
+                  website_id:
+                    type: string
+                    description: ''
+                  external_id_type:
+                    type: string
+                    enum:
+                    - encrypted_email_hash
+                    - '{client-specific}'
+                required:
+                - device_id
+                - website_id
+                - external_id_type
+                title: Lookup by device id
+              - type: object
+                properties:
+                  email_hash:
+                    type: string
+                  website_id:
+                    type: string
+                  external_id_type:
+                    type: string
+                    enum:
+                    - encrypted_email_hash
+                    - '{client-specific}'
+                required:
+                - email_hash
+                - website_id
+                - external_id_type
+                title: Lookup by email hash
+              - type: object
+                properties:
+                  soft_id:
+                    type: string
+                  website_id:
+                    type: string
+                  external_id_type:
+                    type: string
+                    enum:
+                    - encrypted_email_hash
+                    - '{client-specific}'
+                required:
+                - soft_id
+                - website_id
+                - external_id_type
+                title: Lookup by soft id
+      x-readme:
+        code-samples:
+        - code: "curl -X POST https://localhost:8081/v1/identity/lookup \\  \n  -H 'Content-Type: application/json' \\  \n  -d '{  \n     \"website_id\": \"1234\",\n     \"external_id_type\": \"crm_id\",\n     \"device_id\": \"123456789\"\n}'"
+          language: shell
+          name: ''
+        samples-languages:
+        - shell
+      tags:
+      - Identity
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication
