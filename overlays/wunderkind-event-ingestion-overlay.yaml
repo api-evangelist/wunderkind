@@ -1,0 +1,34 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Wunderkind Event Ingestion API
+  version: 1.0.0
+extends: openapi/wunderkind-event-ingestion-openapi.yml
+actions:
+  - target: $.info
+    description: Add API Evangelist provenance and catalog context.
+    update:
+      x-apievangelist:
+        provider: wunderkind
+        harvested: '2026-07-21'
+        source: https://developer.wunderkind.co/reference/service_visit
+        notes: >-
+          Spec extracted verbatim from the OpenAPI definition embedded in the
+          ReadMe-hosted developer portal. The schema is grpc-gateway
+          generated (protobufAny / rpcStatus components, Service_* operation
+          ids, version 2025-01-12) from Wunderkind's internal gRPC service
+          definitions; no .proto files are published.
+  - target: $.servers[0]
+    description: >-
+      Normalize the protocol-relative server URL (//api.wunderkind.co) to an
+      absolute https URL in our derived views; the upstream value breaks
+      naive resolvers.
+    update:
+      url: https://api.wunderkind.co
+      x-apievangelist-original-url: '//api.wunderkind.co'
+  - target: $
+    description: Record contract-quality gaps observed in the upstream spec.
+    update:
+      x-apievangelist-gaps:
+        - no securitySchemes declared; auth is documented out-of-band
+        - identity-lookup paths duplicated into this spec with doubled-slash path keys
+        - operations use a generic default rpcStatus error instead of per-status responses

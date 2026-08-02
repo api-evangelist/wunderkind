@@ -1,0 +1,32 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Wunderkind Email API
+  version: 1.0.0
+extends: openapi/wunderkind-email-openapi.yml
+actions:
+  - target: $.info
+    description: Add API Evangelist provenance and catalog context.
+    update:
+      x-apievangelist:
+        provider: wunderkind
+        harvested: '2026-07-21'
+        source: https://developer.wunderkind.co/reference/sendemail
+        notes: >-
+          Spec extracted verbatim from the OpenAPI definition embedded in the
+          ReadMe-hosted developer portal reference page. Documented rate limit
+          is 1000 requests per minute per API key.
+  - target: $.paths['/email/send'].post
+    description: Flag the send operation's consequence class for agent consumers.
+    update:
+      x-agentic-access:
+        action-class: acting
+        consequence: write
+        human-in-the-loop: recommended
+  - target: $
+    description: >-
+      Record that the spec declares BearerAuth in components.securitySchemes
+      but never applies it via a security requirement; requests do require a
+      Bearer token per the docs.
+    update:
+      x-apievangelist-gaps:
+        - securitySchemes defined but no root or operation-level security[] applied

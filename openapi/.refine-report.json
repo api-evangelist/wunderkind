@@ -1,0 +1,24 @@
+{
+  "provider": "wunderkind",
+  "sources": [
+    "wunderkind-email-api-openapi.yml",
+    "wunderkind-id-resolution-api-openapi.yml",
+    "wunderkind-identity-api-openapi.yml",
+    "wunderkind-send-event-api-openapi.yml",
+    "wunderkind-ucrm-api-openapi.yml",
+    "wunderkind-wunderhook-api-openapi.yml"
+  ],
+  "outputs": [
+    "wunderkind-email-api-openapi.yml",
+    "wunderkind-id-resolution-api-openapi.yml",
+    "wunderkind-identity-api-openapi.yml",
+    "wunderkind-send-event-api-openapi.yml",
+    "wunderkind-ucrm-api-openapi.yml",
+    "wunderkind-wunderhook-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

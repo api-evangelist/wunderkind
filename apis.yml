@@ -1,23 +1,270 @@
 aid: wunderkind
 name: Wunderkind
-description: Wunderkind is a company surfaced as a portfolio company of battery-ventures and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Wunderkind (formerly BounceX) is a performance marketing and identity
+  resolution platform that turns anonymous website and mobile-app traffic into
+  triggered, one-to-one email and text messages. Its Autonomous Marketing
+  Platform pairs an identity graph with AI decisioning, and its Build with
+  Wunderkind developer surface exposes that machinery as APIs: an Identity API
+  for device-ID-to-email resolution, an Event Ingestion API for server-side
+  behavioral events, Email and Text Message send APIs, a UCRM subscribe and
+  unsubscribe API, Signals webhooks that deliver behavioral triggers into ESPs
+  like Klaviyo, Salesforce Marketing Cloud, Braze, and Bloomreach, plus Web and
+  Mobile SDKs for Android, iOS, Flutter, and React Native.
 url: https://raw.githubusercontent.com/api-evangelist/wunderkind/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/197307309?v=4
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - battery-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: full
+x-tier-reason: enriched-provider
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Marketing
+- Personalization
+- Identity Resolution
+- Email
+- SMS
+- Behavioral Data
+- eCommerce
+- Webhooks
+apis:
+- aid: wunderkind:wunderkind-text-message-api
+  name: Wunderkind Text Message API
+  description: >-
+    RESTful endpoints for delivering text messages from platforms external to the Wunderkind ecosystem
+    (ESP, CDP, etc.): single and bulk sends of up to 50,000 messages per request, message status lookup,
+    subscription status checks, and subscribe/unsubscribe of phone numbers. Authenticated with X-Client-ID
+    and X-Client-Secret headers; rate limited to 300 requests per second per website. No OpenAPI is published
+    for this API; the reference is markdown documentation.
+  humanURL: https://developer.wunderkind.co/reference/text-message-api
+  baseURL: https://api.wknd.ai
+  tags:
+  - SMS
+  - Messaging
+  properties:
+  - url: https://developer.wunderkind.co/reference/text-message-api
+    type: APIReference
+  - url: https://developer.wunderkind.co/reference/bulk-text-message-api
+    type: Documentation
+- aid: wunderkind:wunderkind-email-api
+  name: Wunderkind Email API
+  description: Email sending operations
+  humanURL: https://developer.wunderkind.co/reference/sendemail
+  baseURL: https://api.wunderkind.co
+  tags:
+  - Email
+  properties:
+  - type: OpenAPI
+    url: openapi/wunderkind-email-api-openapi.yml
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/sendemail
+  - type: Documentation
+    url: https://developer.wunderkind.co/reference/identity-api
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/batch-id-lookup
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/external_subscribe
+  - type: Documentation
+    url: https://developer.wunderkind.co/docs/event-ingestion-api-guide
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/service_visit
+- aid: wunderkind:wunderkind-id-resolution-api
+  name: Wunderkind Id Resolution API
+  description: The Id Resolution API from Wunderkind — 3 operation(s) for id resolution.
+  humanURL: https://developer.wunderkind.co/reference/sendemail
+  baseURL: https://api.wunderkind.co
+  tags:
+  - Id Resolution
+  properties:
+  - type: OpenAPI
+    url: openapi/wunderkind-id-resolution-api-openapi.yml
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/sendemail
+  - type: Documentation
+    url: https://developer.wunderkind.co/reference/identity-api
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/batch-id-lookup
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/external_subscribe
+  - type: Documentation
+    url: https://developer.wunderkind.co/docs/event-ingestion-api-guide
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/service_visit
+- aid: wunderkind:wunderkind-identity-api
+  name: Wunderkind Identity API
+  description: The Identity API from Wunderkind — 2 operation(s) for identity.
+  humanURL: https://developer.wunderkind.co/reference/sendemail
+  baseURL: https://api.wunderkind.co
+  tags:
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/wunderkind-identity-api-openapi.yml
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/sendemail
+  - type: Documentation
+    url: https://developer.wunderkind.co/reference/identity-api
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/batch-id-lookup
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/external_subscribe
+  - type: Documentation
+    url: https://developer.wunderkind.co/docs/event-ingestion-api-guide
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/service_visit
+- aid: wunderkind:wunderkind-send-event-api
+  name: Wunderkind Send Event API
+  description: The Send Event API from Wunderkind — 11 operation(s) for send event.
+  humanURL: https://developer.wunderkind.co/reference/sendemail
+  baseURL: https://api.wunderkind.co
+  tags:
+  - Send Event
+  properties:
+  - type: OpenAPI
+    url: openapi/wunderkind-send-event-api-openapi.yml
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/sendemail
+  - type: Documentation
+    url: https://developer.wunderkind.co/reference/identity-api
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/batch-id-lookup
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/external_subscribe
+  - type: Documentation
+    url: https://developer.wunderkind.co/docs/event-ingestion-api-guide
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/service_visit
+- aid: wunderkind:wunderkind-ucrm-api
+  name: Wunderkind Ucrm API
+  description: The Ucrm API from Wunderkind — 2 operation(s) for ucrm.
+  humanURL: https://developer.wunderkind.co/reference/sendemail
+  baseURL: https://api.wunderkind.co
+  tags:
+  - Ucrm
+  properties:
+  - type: OpenAPI
+    url: openapi/wunderkind-ucrm-api-openapi.yml
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/sendemail
+  - type: Documentation
+    url: https://developer.wunderkind.co/reference/identity-api
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/batch-id-lookup
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/external_subscribe
+  - type: Documentation
+    url: https://developer.wunderkind.co/docs/event-ingestion-api-guide
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/service_visit
+- aid: wunderkind:wunderkind-wunderhook-api
+  name: Wunderkind Wunderhook API
+  description: The Wunderhook API from Wunderkind — 1 operation(s) for wunderhook.
+  humanURL: https://developer.wunderkind.co/reference/sendemail
+  baseURL: https://api.wunderkind.co
+  tags:
+  - Wunderhook
+  properties:
+  - type: OpenAPI
+    url: openapi/wunderkind-wunderhook-api-openapi.yml
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/sendemail
+  - type: Documentation
+    url: https://developer.wunderkind.co/reference/identity-api
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/batch-id-lookup
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/external_subscribe
+  - type: Documentation
+    url: https://developer.wunderkind.co/docs/event-ingestion-api-guide
+  - type: APIReference
+    url: https://developer.wunderkind.co/reference/service_visit
+common:
+- type: AgenticAccess
+  url: agentic-access/wunderkind-agentic-access.yml
+- type: DomainSecurity
+  url: security/wunderkind-domain-security.yml
+- type: Authentication
+  url: authentication/wunderkind-authentication.yml
+- url: https://www.wunderkind.co
+  type: Website
+- url: https://developer.wunderkind.co/
+  type: DeveloperPortal
+- url: https://developer.wunderkind.co/docs
+  type: Documentation
+- url: https://developer.wunderkind.co/reference
+  type: APIReference
+- url: https://developer.wunderkind.co/docs/msdk-getting-started
+  type: GettingStarted
+- url: https://support.wunderkind.co/hc
+  type: Support
+- url: https://www.wunderkind.co/blog/
+  type: Blog
+- url: https://github.com/wunderkind-oss
+  type: GitHubOrganization
+- url: https://platform.wunderkind.co
+  type: Login
+- url: https://www.wunderkind.co/terms/
+  type: TermsOfService
+- url: https://www.wunderkind.co/privacy/
+  type: PrivacyPolicy
+- url: https://status.wunderkind.co
+  type: StatusPage
+- url: https://www.linkedin.com/company/bewunderkind/
+  type: LinkedIn
+- url: changelog/wunderkind-changelog.yml
+  type: ChangeLog
+- url: lifecycle/wunderkind-lifecycle.yml
+  type: Lifecycle
+- url: asyncapi/wunderkind-signals-webhooks.yml
+  type: Webhooks
+- url: packages/wunderkind-packages.yml
+  type: Packages
+- url: packages/wunderkind-packages.yml
+  type: SDKs
+- url: well-known/wunderkind-well-known.yml
+  type: WellKnown
+- url: llms/wunderkind-llms.txt
+  type: LLMsTxt
+- url: mcp/wunderkind-mcp.yml
+  type: MCPServer
+- url: errors/wunderkind-problem-types.yml
+  type: ErrorCatalog
+- url: conventions/wunderkind-conventions.yml
+  type: Conventions
+- url: conformance/wunderkind-conformance.yml
+  type: Conformance
+- url: data-model/wunderkind-data-model.yml
+  type: DataModel
+- url: rate-limits/wunderkind-rate-limits.yml
+  type: RateLimits
+- url: skills/_index.yml
+  type: AgentSkill
+- url: security/wunderkind-trust-center.yml
+  type: TrustCenter
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 30
+  pass: local-v1

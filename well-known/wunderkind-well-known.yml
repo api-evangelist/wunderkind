@@ -1,0 +1,78 @@
+generated: '2026-07-21'
+method: searched
+description: >-
+  Probe of the /.well-known/ discovery surface (plus /llms.txt) across every
+  Wunderkind host referenced by apis.yml and the harvested OpenAPI servers.
+  Every status was recorded at fetch time; absence (404/500/503) is valid
+  observed data. The only published discovery document is /llms.txt on the
+  developer portal, which advertises itself on the portal homepage as the
+  AI-agent index of all docs pages and OpenAPI-described endpoints.
+hosts:
+  - host: https://www.wunderkind.co
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://developer.wunderkind.co
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 200
+        file: ../llms/wunderkind-llms.txt
+  - host: https://api.wunderkind.co
+    note: API gateway returns HTTP 500 (application/json error envelope) for all unrouted paths.
+    documents:
+      - path: /.well-known/security.txt
+        status: 500
+      - path: /.well-known/openid-configuration
+        status: 500
+      - path: /.well-known/oauth-authorization-server
+        status: 500
+      - path: /.well-known/api-catalog
+        status: 500
+      - path: /.well-known/ai-plugin.json
+        status: 500
+  - host: https://api.wknd.ai
+    note: Text Message API host; unrouted paths return 404 text/plain.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://api.bounceexchange.com
+    note: Legacy client-side (public site-ID) API host; returned 503 to all probe paths at fetch time.
+    documents:
+      - path: /.well-known/security.txt
+        status: 503
+      - path: /.well-known/openid-configuration
+        status: 503
+      - path: /.well-known/oauth-authorization-server
+        status: 503
+      - path: /.well-known/api-catalog
+        status: 503
+      - path: /.well-known/ai-plugin.json
+        status: 503

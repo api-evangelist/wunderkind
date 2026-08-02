@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+url: https://trust.wunderkind.co/
+platform: Vanta Trust Center
+certifications: []
+notes: >-
+  trust.wunderkind.co is live (HTTP 200) and titled "Wunderkind Trust
+  Center", hosted on Vanta (assets.vanta.com trust-report application,
+  signature manifest, and an app.vanta.com document link are embedded in the
+  page shell). The certification list is rendered client-side by the Vanta
+  SPA and was not extractable by this probe, so no certification names are
+  asserted here. The Wunderkind privacy policy addresses GDPR.
+evidence:
+- source: https://trust.wunderkind.co/
+  kind: page
+  detail: '<title>Wunderkind Trust Center</title>; Vanta trust-report JS application shell'
+- source: https://trust.wunderkind.co/
+  kind: document-link
+  detail: https://app.vanta.com/doc?s=qsm7hcih4jdrc8mrfmqsp
+- source: https://www.wunderkind.co/privacy/
+  kind: page
+  detail: GDPR referenced in the privacy policy

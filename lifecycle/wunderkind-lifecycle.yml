@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.wunderkind.co + https://developer.wunderkind.co/changelog/msdk
+versioning:
+  scheme: mixed
+  notes: >-
+    Server-side REST APIs version in the URI path (/ucrm/v1/,
+    /id-resolution/v1/); the Event Ingestion API is date-versioned in its
+    OpenAPI info (2025-01-12); Mobile SDKs use semver (current 3.2.1,
+    2026-04-30). No unified platform API versioning policy is published.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  notes: >-
+    No public deprecation policy or RFC 8594 Sunset/Deprecation header
+    support found on the developer portal. No operations in the harvested
+    OpenAPI are marked deprecated. The Mobile SDK changelog flags breaking
+    changes (e.g. itemId required in trackSelectSku as of 2.2.0).
+sla:
+  url: null
+  notes: No public SLA or uptime target published.
+status_page: https://status.wunderkind.co
+status_page_platform: Atlassian Statuspage
+changelog: https://developer.wunderkind.co/changelog/msdk
+deprecated_operations: []

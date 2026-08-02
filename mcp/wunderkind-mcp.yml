@@ -1,0 +1,61 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/ (harvested Wunderkind OpenAPI definitions)
+notes: >-
+  No official Wunderkind MCP server was found: the official MCP registry
+  returns zero results for "wunderkind" and npm has no first-party
+  Wunderkind MCP package. This is a candidate tool surface derived from the
+  operations in the harvested OpenAPI definitions - one tool per operationId.
+server:
+  name: wunderkind
+  transport: http
+tools:
+- name: send_email
+  description: Send an email to one or more subscribed recipients through the Wunderkind email delivery platform
+  source_operation: openapi/wunderkind-email-openapi.yml#sendEmail
+- name: batch_id_lookup
+  description: Resolve a list of WKND device IDs to best-matched hashed emails for a website ID
+  source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identitylookupbatch
+- name: get_encryption_key
+  description: Obtain the client's encryption key to decipher encrypted email hashes from realtime ID lookup
+  source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identityenckey
+- name: subscribe_users
+  description: Subscribe a list of email addresses for a website ID
+  source_operation: openapi/wunderkind-ucrm-openapi.yml#external_subscribe
+- name: unsubscribe_users
+  description: Unsubscribe a list of email addresses for a website ID
+  source_operation: openapi/wunderkind-ucrm-openapi.yml#external_unsubscribe
+- name: track_add_to_cart
+  description: Record that a user added an item to their cart
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_AddToCart
+- name: track_page_view
+  description: Record that a user viewed a page, including category, search, or item details
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_Pageview
+- name: track_order_transaction
+  description: Record that a user completed an order transaction
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_OrderTransaction
+- name: track_visit
+  description: Record a user visit/session start
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_Visit
+- name: track_user_identified
+  description: Record that a user has been identified, with as much profile information as possible
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_UserIdentified
+- name: track_empty_cart
+  description: Record that a user emptied their cart
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_EmptyCart
+- name: track_link
+  description: Record a deep link opening into a mobile application
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_TrackLink
+- name: track_custom_event
+  description: Record a custom event with a dynamic title/name
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_Custom
+- name: track_app_push_action
+  description: Record that a push notification was delivered to a device
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_AppPushAction
+- name: track_app_push_toggle
+  description: Record that a device toggled app push notifications
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_AppPushToggle
+- name: track_app_push_token_set
+  description: Record that a device set a new app push token
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_AppPushTokenSet

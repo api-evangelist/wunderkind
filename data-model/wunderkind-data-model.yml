@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/wunderkind-event-ingestion-openapi.yml
+notes: >-
+  Entity-relationship graph derived from schema $ref links in the harvested
+  OpenAPI. The Event Ingestion API carries the platform's core data model:
+  every behavioral event embeds an Identification block that fans out to
+  device, session, user, source, profile, and location identities - the
+  spine of Wunderkind's identity graph. Identity API and Signals webhook
+  entities are included where their fields reference the same identifiers
+  (WKND device ID, SHA-256 email hash).
+entities:
+- name: eventsIdentification
+  description: Composite identity block attached to every behavioral event.
+- name: eventsDeviceIdentification
+- name: eventsSessionIdentification
+- name: eventsUserIdentification
+- name: eventsProfile
+- name: eventsSource
+- name: eventsLocation
+- name: eventsWunderkindVisitorIdentifier
+- name: eventsSmarterHQVisitorIdentifier
+  description: Legacy SmarterHQ visitor identifier (Wunderkind acquired SmarterHQ).
+- name: eventsCommon
+  description: Common wrapper (identification + timestamps) used by app-push, custom, and track-link events.
+- name: eventsMoney
+- name: eventsOrderLineItem
+- name: eventsItemPageDetails
+- name: eventsCategoryPageDetails
+- name: eventsSearchPageDetails
+- name: WkndDeviceId
+  description: Wunderkind device ID; input to Identity API batch lookup, resolves to a SHA-256 email hash.
+- name: EmailHash
+  description: SHA-256 hash of a lowercased email address; the exchange currency of the identity surfaces.
+relationships:
+- {from: eventsAddToCartEvent, to: eventsIdentification, type: has_one, via: identification}
+- {from: eventsEmptyCartEvent, to: eventsIdentification, type: has_one, via: identification}
+- {from: eventsOrderTransactionEvent, to: eventsIdentification, type: has_one, via: identification}
+- {from: eventsOrderTransactionEvent, to: eventsMoney, type: has_one, via: 'total, shipping, tax, discounts'}
+- {from: eventsOrderTransactionEvent, to: eventsOrderLineItem, type: has_many, via: items}
+- {from: eventsOrderLineItem, to: eventsMoney, type: has_one, via: unitPrice}
+- {from: eventsPageViewEvent, to: eventsIdentification, type: has_one, via: identification}
+- {from: eventsPageViewEvent, to: eventsItemPageDetails, type: has_one, via: item}
+- {from: eventsPageViewEvent, to: eventsCategoryPageDetails, type: has_one, via: category}
+- {from: eventsPageViewEvent, to: eventsSearchPageDetails, type: has_one, via: search}
+- {from: eventsItemPageDetails, to: eventsMoney, type: has_one, via: price}
+- {from: eventsUserIdentifiedEvent, to: eventsIdentification, type: has_one, via: identification}
+- {from: eventsVisitEvent, to: eventsIdentification, type: has_one, via: identification}
+- {from: eventsAppPushActionEvent, to: eventsCommon, type: has_one, via: common}
+- {from: eventsAppPushToggleEvent, to: eventsCommon, type: has_one, via: common}
+- {from: eventsAppPushTokenSetEvent, to: eventsCommon, type: has_one, via: common}
+- {from: eventsCustomEvent, to: eventsCommon, type: has_one, via: common}
+- {from: eventsTrackLinkEvent, to: eventsCommon, type: has_one, via: common}
+- {from: eventsCommon, to: eventsIdentification, type: has_one, via: identification}
+- {from: eventsIdentification, to: eventsDeviceIdentification, type: has_one, via: deviceIdentification}
+- {from: eventsIdentification, to: eventsSessionIdentification, type: has_one, via: sessionIdentification}
+- {from: eventsIdentification, to: eventsUserIdentification, type: has_one, via: userIdentification}
+- {from: eventsIdentification, to: eventsSource, type: has_one, via: source}
+- {from: eventsIdentification, to: eventsProfile, type: has_one, via: profile}
+- {from: eventsIdentification, to: eventsLocation, type: has_one, via: location}
+- {from: eventsSessionIdentification, to: eventsWunderkindVisitorIdentifier, type: has_one, via: wunderkindVisitorIdentifier}
+- {from: eventsSessionIdentification, to: eventsSmarterHQVisitorIdentifier, type: has_one, via: smarterhqVisitorIdentifier}
+- {from: WkndDeviceId, to: EmailHash, type: belongs_to, via: 'Identity API batch lookup (device_ids -> results[].email)'}

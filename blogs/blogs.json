@@ -1,0 +1,21 @@
+{
+  "repo": "wunderkind",
+  "feeds": [
+    {
+      "source": "https://www.wunderkind.co/blog/rss.xml",
+      "feed_url": "https://www.wunderkind.co/blog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.wunderkind.co/blog/",
+      "feed_url": "https://www.wunderkind.co/blog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-08-01T15:49:00Z"
+}

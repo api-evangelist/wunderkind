@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: generated
+notes: >-
+  Packaged Agent Skills generated from the harvested Wunderkind OpenAPI
+  definitions plus the captured conventions and error artifacts. Every
+  operation listed exists verbatim in the referenced spec. Wunderkind
+  publishes no first-party skills or AGENTS.md.
+skills:
+- file: wunderkind-resolve-identities.md
+  name: Resolve WKND device IDs to emails
+  api: openapi/wunderkind-identity-openapi.yml
+  operations: [post_id-resolutionv1identitylookupbatch, post_id-resolutionv1identityenckey]
+- file: wunderkind-manage-subscriptions.md
+  name: Subscribe and unsubscribe users
+  api: openapi/wunderkind-ucrm-openapi.yml
+  operations: [external_subscribe, external_unsubscribe]
+- file: wunderkind-send-email.md
+  name: Send an email through Wunderkind
+  api: openapi/wunderkind-email-openapi.yml
+  operations: [sendEmail]
+- file: wunderkind-ingest-events.md
+  name: Ingest server-side behavioral events
+  api: openapi/wunderkind-event-ingestion-openapi.yml
+  operations: [Service_Visit, Service_Pageview, Service_AddToCart, Service_EmptyCart, Service_OrderTransaction, Service_UserIdentified, Service_TrackLink, Service_Custom]

@@ -1,0 +1,95 @@
+# Wunderkind Developer Portal Documentation
+
+> Documentation for Wunderkind Developer Portal
+
+## Guides
+- [Authenticate API requests](https://developer.wunderkind.co/docs/authenticate-api-requests.md): Learn how to authenticate requests to Wunderkind endpoints.
+- [Server-Side Tracking Implementation](https://developer.wunderkind.co/docs/server-side-tracking-implementation.md)
+- [Signals Overview](https://developer.wunderkind.co/docs/signals.md): Introducing Signals, part of the new Build with Wunderkind product catalog!
+- [Wunderkind Email Metrics](https://developer.wunderkind.co/docs/explaining-wunderkind-metric-properties.md): This page breaks down the event properties you can expect to populate in metric payloads — and display dynamically in email marketing campaigns.
+- [Wunderkind Text Metrics](https://developer.wunderkind.co/docs/wunderkind-signals-text-metrics.md): This page breaks down the event properties you can expect to populate in metric payloads — and display dynamically in text marketing campaigns.
+- [Signals in Salesforce Marketing Cloud ](https://developer.wunderkind.co/docs/wunderkind-signals-in-sfmc.md)
+- [Signals for SFMC Journey Builder](https://developer.wunderkind.co/docs/signals-for-sfmc-journey-builder.md)
+- [Integration Overview](https://developer.wunderkind.co/docs/integration-overview.md): Learn how Wunderkind interacts with Braze API for AMP implementations
+- [Canvas Entry Properties in Braze AMP](https://developer.wunderkind.co/docs/canvas-entry-properties-in-braze-amp.md): Learn how to work with dynamic properties passed in Wunderkind AMP payloads.
+- [Android Installation](https://developer.wunderkind.co/docs/android-installation.md)
+- [Flutter Installation](https://developer.wunderkind.co/docs/flutter-installation.md)
+- [iOS Installation](https://developer.wunderkind.co/docs/ios-installation.md)
+- [ReactNative Installation](https://developer.wunderkind.co/docs/reactnative-installation.md)
+- [MSDK Development Guide](https://developer.wunderkind.co/docs/msdk-getting-started.md): Get setup on the Wunderkind Mobile SDK.
+- [Android AppPush Setup](https://developer.wunderkind.co/docs/android-apppush-setup-guide.md)
+- [iOS AppPush Setup](https://developer.wunderkind.co/docs/ios-apppush-setup.md)
+- [Flutter AppPush Setup](https://developer.wunderkind.co/docs/flutter-apppush-setup.md)
+- [ReactNative AppPush Setup](https://developer.wunderkind.co/docs/reactnative-apppush-setup.md)
+- [WebSDK Usage](https://developer.wunderkind.co/docs/websdk-usage.md)
+- [Event Ingestion API Guide](https://developer.wunderkind.co/docs/event-ingestion-api-guide.md)
+
+## API Reference
+- [Send Text Message API](https://developer.wunderkind.co/reference/text-message-api.md): Allows the delivery of text messages from a platform external to the Wunderkind ecosystem (ESP, CDP, etc.).
+- [Send Bulk Text Messages API](https://developer.wunderkind.co/reference/bulk-text-message-api.md): Send bulk text messages from a platform external to the Wunderkind. 50,000 messages can be sent through one API request.
+- [Message API - Klaviyo Integration Guide](https://developer.wunderkind.co/reference/text-api-klaviyo-integration.md)
+- [Message Status API](https://developer.wunderkind.co/reference/text-message-status-api.md): Returns the send status of the given message ID. **The status will be kept for 7 days**.
+- [Subscription Status API](https://developer.wunderkind.co/reference/text-subscription-status-api.md): Returns the subscription status of the given phone numbers. You can either provide a list of phone numbers or a CSV file containing the phone numbers.
+- [Unsubscribe Phone Numbers API](https://developer.wunderkind.co/reference/text-unsubscribe-users-api.md): Unsubscribes phone numbers from receiving Text Messages. You can either provide a list of phone numbers or a CSV file containing the phone numbers.
+- [Subscribe Phone Numbers API](https://developer.wunderkind.co/reference/text-message-optin-api.md): Subscribe phone numbers to receive text messages. You can provide numbers as a JSON array or upload them in a base64-encoded CSV file.
+- [MobileSDK](https://developer.wunderkind.co/reference/mobilesdk.md): The Mobile SDK tracks user behavior and mobile app events
+- [trackLink](https://developer.wunderkind.co/reference/trackdeeplink.md)
+- [trackEmptyCart](https://developer.wunderkind.co/reference/trackemptycart.md)
+- [trackViewSearch](https://developer.wunderkind.co/reference/trackviewsearch.md): This event is triggered when a user views a search results screen.
+- [trackViewItem](https://developer.wunderkind.co/reference/trackviewitem.md): The ViewItem event is triggered when a user views an item or product within the app.
+- [trackViewCategory](https://developer.wunderkind.co/reference/trackviewcategory.md): This event is triggered when a user views a category screen.
+- [trackSignUp](https://developer.wunderkind.co/reference/userevents.md): The SignUp event is triggered when a user signs up via their app.
+- [trackSelectSKU](https://developer.wunderkind.co/reference/trackselectsku.md): The SelectSKU event is triggered when a user selects specific product attributes (e.g. color, size, etc).
+- [trackScreenView](https://developer.wunderkind.co/reference/trackscreenview.md): The ScreenView event is triggered when a user navigates to a new screen within the app.
+- [trackPurchase](https://developer.wunderkind.co/reference/trackpurchase.md): This event is triggered when a user purchases an item and completes their order.
+- [trackLoggedIn](https://developer.wunderkind.co/reference/trackloggedin.md): Track when a user logs in to the application.
+- [trackAddToCart](https://developer.wunderkind.co/reference/trackaddtocart.md): This event is triggered when a user adds an item to their cart.
+- [trackCustom](https://developer.wunderkind.co/reference/trackcustom.md)
+- [trackTextOptIn](https://developer.wunderkind.co/reference/tracktextoptin.md)
+- [hashedData](https://developer.wunderkind.co/reference/hasheddata.md)
+- [multipleWebsiteIDs](https://developer.wunderkind.co/reference/multiplewebsiteids.md)
+- [trackAppPushDelivered](https://developer.wunderkind.co/reference/trackapppushdelivered.md)
+- [trackAppPushOpened](https://developer.wunderkind.co/reference/trackapppushopened.md)
+- [trackAppPushOptIn](https://developer.wunderkind.co/reference/trackapppushoptin.md)
+- [trackAppPushOptOut](https://developer.wunderkind.co/reference/trackapppushoptout.md)
+- [trackAppPushTokenSet](https://developer.wunderkind.co/reference/trackapppushtokenset.md)
+- [trackCarRentalProgress](https://developer.wunderkind.co/reference/trackcarrentalprogress.md)
+- [trackCarRentalAddToCart](https://developer.wunderkind.co/reference/trackcarrentaladdtocart.md)
+- [trackHotelRentalAddToCart](https://developer.wunderkind.co/reference/trackhotelrentaladdtocart.md)
+- [trackHotelRentalProgress](https://developer.wunderkind.co/reference/trackhotelrentalprogress.md)
+- [trackRentalPurchase](https://developer.wunderkind.co/reference/trackrentalpurchase.md)
+- [Logging](https://developer.wunderkind.co/reference/logging.md): Configure logging in the Wunderkind Mobile SDK
+- [Context Info Tracking](https://developer.wunderkind.co/reference/context-info-tracking.md)
+- [Initialization](https://developer.wunderkind.co/reference/initialization.md): Initializing the Wunderkind Mobile SDK
+- [Send Signals with Webhooks](https://developer.wunderkind.co/reference/signalswebhook.md)
+- [Signals Webhook Implementation](https://developer.wunderkind.co/reference/getting-started-with-signals-webhooks.md)
+- [1. Creating a Signals Webhook Consumer](https://developer.wunderkind.co/reference/creating-a-signals-webhook-consumer.md)
+- [2. Setting up the Signals Webhook Consumer in Wunderkind Platform](https://developer.wunderkind.co/reference/2-setting-up-the-signals-webhook-consumer-in-wunderkind-platform.md)
+- [3. Testing Sending Experiences to the Signals Webhook Consumer](https://developer.wunderkind.co/reference/3-testing-sending-experiences-to-the-signals-webhook-consumer.md)
+- [4. Testing Integration with 3rd Party Partners](https://developer.wunderkind.co/reference/4-testing-integration-with-3rd-party-partners.md)
+- [5. Launching Signals Webhook](https://developer.wunderkind.co/reference/5-launching-signals-webhook.md)
+- [Authentication & Security](https://developer.wunderkind.co/reference/authentication-security.md)
+- [Sample Signals Webhook Payloads](https://developer.wunderkind.co/reference/sample-signals-webhook-payload.md)
+- [Send A Webhook ](https://developer.wunderkind.co/reference/signals-webhook.md): This is your first endpoint! Edit this page to start documenting your API.
+- [Sender API  (Email)](https://developer.wunderkind.co/reference/email-send-api-coming-soon.md)
+- [Send Email](https://developer.wunderkind.co/reference/sendemail.md): Send an email to one or more recipients through the Wunderkind email delivery platform to a subscribers of the website id set by wunderkind.  This endpoint supports both HTML and plain text email content, custom sender information, and flexible recipient management. All emails are processed synchronously.  **Important Notes:** - All recipient email addresses must be valid and properly formatted - The sender email address must be verified and susbcribed for the website id set by wunderkind - If the email address is not subscribed, system silently ignores - HTML content should be properly encoded and sanitized - Large recipient lists may experience delayed processing
+- [Track Link Event](https://developer.wunderkind.co/reference/service_tracklink.md): This should be emitted each time a deep link opens into a mobile application only. Pass all deeplink URL in their final form including all URL parameters. If this is a shortened URL (e.g. URL) - please resolve/convert to the final URL before passing.
+- [Custom Event](https://developer.wunderkind.co/reference/service_custom.md): Records a custom event with a dynamic title/name
+- [App Push Action](https://developer.wunderkind.co/reference/service_apppushaction.md): Records that a push notification was delivered to a device
+- [Device AppPush Toggle](https://developer.wunderkind.co/reference/service_apppushtoggle.md): Records that a device toggled app push notifications
+- [Device AppPush Token Set](https://developer.wunderkind.co/reference/service_apppushtokenset.md): Records that a device set a new app push token
+- [Add to Cart](https://developer.wunderkind.co/reference/service_addtocart.md): Records that a user has added an item to their cart
+- [Visit/Session Started](https://developer.wunderkind.co/reference/service_visit.md): Records that a user visit/session
+- [Page View](https://developer.wunderkind.co/reference/service_pageview.md): Records that a user has viewed a page; this should also include data of the viewed category, search, and/or items.
+- [Order Transaction](https://developer.wunderkind.co/reference/service_ordertransaction.md): Records that a user has completed an order transaction. Must be sent in addition to the page view event.
+- [Empty Cart](https://developer.wunderkind.co/reference/service_emptycart.md): Records that a user has emptied their cart. This event should only be triggered when a user has items in their cart and empties it. Not every time a user opens their empty cart.
+- [User Identified](https://developer.wunderkind.co/reference/service_useridentified.md): Records that a user has been identified. Should include as much information on the user as possible.
+- [Identity API](https://developer.wunderkind.co/reference/identity-api.md): Wunderkind’s ID API extends the power of our identity technology beyond our core solutions, enabling clients to enhance marketing performance across their entire stack.
+- [Batch ID Lookup](https://developer.wunderkind.co/reference/batch-id-lookup.md): This endpoint will allow the client to make an API call to us, passing a single WKND device ID or a list of WKND device IDs, and we return the best-matched email. This API will be behind authentication.
+- [Secret Endpoint](https://developer.wunderkind.co/reference/secret-endpoint.md): The endpoint is used to obtain client's encryption key to decipher encrypted email hashes gotten from Realtime ID Lookup.
+- [Response interpreting](https://developer.wunderkind.co/reference/encryption-key-usage.md)
+- [Unsubscribe a list of users](https://developer.wunderkind.co/reference/external_unsubscribe.md)
+- [Subscribe a list of users](https://developer.wunderkind.co/reference/external_subscribe.md)
+
+## Changelog
+- [Mobile SDK Changelog](https://developer.wunderkind.co/changelog/msdk.md)

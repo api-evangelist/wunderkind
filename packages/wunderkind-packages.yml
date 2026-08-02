@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wunderkind.co/docs/msdk-getting-started
+description: >-
+  First-party Wunderkind client SDKs. Wunderkind distributes its Mobile SDKs
+  (all version 3.2.1 as of 04/30/26) through its own Google Cloud Artifact
+  Registry and Cloud Storage rather than the public registries; the iOS SDK
+  is additionally published as a public Swift Package on GitHub
+  (wunderkind-oss org). The Web SDK is a hosted JavaScript tag, not a
+  registry package. No packages were found on npmjs, PyPI, Maven Central,
+  NuGet, RubyGems, Packagist, or crates.io (an unrelated
+  react-native-wunderkind-sdk-0.0.10 squatter package on npm is not
+  first-party).
+packages:
+- language: swift
+  platform: ios
+  registry: swift-package-manager
+  name: wunderkind-swift-sdk
+  url: https://github.com/wunderkind-oss/wunderkind-swift-sdk
+  source: https://github.com/wunderkind-oss/wunderkind-swift-sdk
+  install: 'Xcode > File > Add Packages... > https://github.com/wunderkind-oss/wunderkind-swift-sdk'
+  version: 3.2.1
+  official: true
+- language: swift
+  platform: ios
+  registry: cocoapods-podspec
+  name: Wunderkind
+  url: https://storage.googleapis.com/wunderkind-ios-sdk/3.2.1.podspec
+  install: "pod 'Wunderkind', podspec: 'https://storage.googleapis.com/wunderkind-ios-sdk/3.2.1.podspec'"
+  version: 3.2.1
+  official: true
+  docs: https://developer.wunderkind.co/docs/ios-installation
+- language: kotlin
+  platform: android
+  registry: google-artifact-registry-maven
+  name: co.wunderkind.sdk:wunderkindsdk
+  url: https://us-central1-maven.pkg.dev/wk-production-sdk/wunderkind-android-sdk-production
+  install: 'implementation "co.wunderkind.sdk:wunderkindsdk:3.2.1"'
+  version: 3.2.1
+  official: true
+  docs: https://developer.wunderkind.co/docs/android-installation
+- language: javascript
+  platform: react-native
+  registry: google-artifact-registry-npm
+  name: "@wunderkind-sdk-react/react-native-wunderkind-sdk"
+  url: https://us-central1-npm.pkg.dev/wk-production-sdk/wunderkind-reactnative-sdk-production
+  install: npm install --save @wunderkind-sdk-react/react-native-wunderkind-sdk
+  version: 3.2.1
+  official: true
+  docs: https://developer.wunderkind.co/docs/reactnative-installation
+- language: dart
+  platform: flutter
+  registry: manual-download
+  name: wunderkind_sdk
+  url: https://console.cloud.google.com/storage/browser/wunderkind-flutter-sdk
+  install: 'Download SDK archive from Wunderkind Cloud Storage and add wunderkind_sdk as a path dependency in pubspec.yaml'
+  version: 3.2.1
+  official: true
+  docs: https://developer.wunderkind.co/docs/flutter-installation

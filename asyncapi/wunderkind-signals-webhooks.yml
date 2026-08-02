@@ -1,0 +1,70 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wunderkind.co/reference/signalswebhook
+spec_type: Webhooks
+notes: >-
+  Wunderkind publishes no AsyncAPI document. Its event surface is Signals
+  Webhooks: outbound, JSON-only behavioral triggers pushed from the
+  Wunderkind platform to a client-owned consumer endpoint (or directly into
+  ESPs - Klaviyo, Salesforce Marketing Cloud, Braze, Bloomreach). The
+  consumer contract is documented as an OpenAPI file ("Wunderhook") captured
+  verbatim at openapi/wunderkind-signals-wunderhook-openapi.yml.
+direction: outbound
+consumer_contract: ../openapi/wunderkind-signals-wunderhook-openapi.yml
+setup_docs:
+- https://developer.wunderkind.co/reference/getting-started-with-signals-webhooks
+- https://developer.wunderkind.co/reference/creating-a-signals-webhook-consumer
+- https://developer.wunderkind.co/reference/sample-signals-webhook-payload
+security:
+  methods:
+  - static headers configured at setup
+  - Basic authentication (username/password)
+  ip_allowlist:
+    docs: https://developer.wunderkind.co/reference/authentication-security
+    addresses:
+    - 34.135.66.232
+    - 34.147.167.12
+    - 34.147.200.232
+    - 34.150.136.26
+    - 34.150.212.66
+    - 34.170.176.15
+    - 34.173.126.43
+    - 34.48.179.179
+    - 35.186.165.230
+    - 35.186.166.108
+    - 35.186.186.4
+    - 35.188.251.255
+    - 35.188.253.49
+    - 35.188.32.209
+    - 35.194.16.136
+    - 35.194.77.203
+    - 35.232.7.126
+    - 35.239.129.241
+    - 35.239.148.218
+    - 35.245.168.50
+  notes: No dynamic signing (HMAC) is currently supported for Signals Webhook requests.
+events:
+- name: signal
+  description: >-
+    A behavioral trigger (cart abandonment, category abandonment, low stock,
+    price drop, etc.) for one recipient. Purpose is carried in WkPurpose,
+    recommended channel in WkChannel, audience in WkUserType.
+  payload:
+    root_fields:
+    - Recipient (email or phone; or RecipientSha256, SHA-256 of the lowercased recipient)
+    - Origin (identifies the event as a Wunderkind Signal)
+    - DataOnly (distinguishes data-only sends)
+    - WkPurpose, WkChannel, WkUserType
+    - WkCouponCode, WkCouponPurpose (if applicable)
+    - WkCartReplenishUrl / WkCategoryUrl (hero clickthroughs)
+    - WkAdditionalProperties (key/value extension array)
+    items_array: >-
+      WkItems: up to 4 product objects with WkId, WkCopy, WkImageUrl, WkUrl
+      (required) plus WkPrice, WkSalePrice, WkQuantity, and
+      WkAdditionalProperties.
+  sample: https://developer.wunderkind.co/reference/sample-signals-webhook-payload
+esp_integrations:
+  klaviyo: {email: true, text: true}
+  salesforce_marketing_cloud: {email: true, text: true}
+  braze: {email: true, text: planned Q2 2026}
+  bloomreach: {email: true, text: planned Q2 2026}

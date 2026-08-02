@@ -1,0 +1,69 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wunderkind.co/docs/authenticate-api-requests
+docs: https://developer.wunderkind.co/docs/authenticate-api-requests
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+  notes: >-
+    Wunderkind splits authentication by surface. Server-side APIs on
+    api.wunderkind.co authenticate with a private API key sent as
+    "Authorization: apikey {apikey}"; keys are created per API product
+    (id-resolution, UCRM, ...) under Settings > API Credentials in Wunderkind
+    Platform and require an Admin or Manager role. Client-side APIs on
+    api.bounceexchange.com use a public key: the numeric website ID (site ID),
+    normally supplied via the Mobile/Web SDKs. The Text Message API on
+    api.wknd.ai uses paired X-Client-ID / X-Client-Secret headers provisioned
+    by Wunderkind. The Email API documents Bearer (JWT) token authentication.
+    A 400 error indicates an invalid or missing API key on server-side
+    endpoints.
+schemes:
+- name: PrivateApiKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  format: 'apikey {apikey}'
+  description: >-
+    Private API key created in Wunderkind Platform (Settings > API
+    Credentials), scoped to an API product such as id-resolution or UCRM.
+    Never use private keys in client-side code or public repositories.
+  hosts:
+  - https://api.wunderkind.co
+  sources:
+  - openapi/wunderkind-identity-openapi.yml
+  - openapi/wunderkind-ucrm-openapi.yml
+  docs: https://developer.wunderkind.co/docs/authenticate-api-requests
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Bearer token authentication documented for the Wunderkind Email API.
+  hosts:
+  - https://api.wunderkind.co
+  sources:
+  - openapi/wunderkind-email-openapi.yml
+- name: TextApiClientCredentials
+  type: apiKey
+  in: header
+  parameter: X-Client-ID / X-Client-Secret
+  description: >-
+    Paired headers for the Text Message API on api.wknd.ai; X-Client-ID is a
+    32-byte hashed string and X-Client-Secret a 64-byte hashed string, both
+    provided by Wunderkind.
+  hosts:
+  - https://api.wknd.ai
+  docs: https://developer.wunderkind.co/reference/text-message-api
+- name: PublicSiteId
+  type: apiKey
+  in: query
+  parameter: website_id
+  description: >-
+    Public key authentication for client-side endpoints on
+    api.bounceexchange.com; the public API key is the numeric website ID
+    (site ID), normally handled by the Web and Mobile SDKs.
+  hosts:
+  - https://api.bounceexchange.com
+  docs: https://developer.wunderkind.co/docs/authenticate-api-requests

@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.wunderkind.co/changelog/msdk
+scheme: semver (Mobile SDK); the REST APIs publish no dated changelog
+current:
+  mobile_sdk: 3.2.1
+  released: '2026-04-30'
+  platforms: [Android, iOS, Flutter, React Native]
+entries:
+- version: 3.2.1
+  date: '2026-04-30'
+  breaking: false
+  highlights:
+  - Minor internal improvements across all four platforms
+- version: 3.1.0
+  date: '2025-07-28'
+  breaking: false
+  highlights:
+  - Improved login functions
+- version: 3.0.0
+  date: '2025-06-25'
+  breaking: true
+  highlights:
+  - Improved trackLink function
+- version: 2.2.3
+  date: '2025-06-03'
+  breaking: false
+  highlights:
+  - Improved trackLink function
+- version: 2.2.1
+  date: '2025-05-21'
+  breaking: false
+  highlights:
+  - Improved error logging
+- version: 2.2.0
+  date: '2025-05-02'
+  breaking: true
+  highlights:
+  - 'Required: itemId added to trackSelectSku (itemId already utilized in trackViewItem)'
+- version: 2.1.5
+  date: '2025-04-08'
+  breaking: false
+  highlights: []
+- version: 2.1.0
+  date: '2025-03-20'
+  breaking: false
+  highlights:
+  - 'ProductCategory: title is optional'
+  - trackLink added

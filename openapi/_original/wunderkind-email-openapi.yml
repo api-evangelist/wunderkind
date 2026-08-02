@@ -1,0 +1,233 @@
+openapi: 3.0.3
+info:
+  title: Wunderkind Email API
+  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers
+    email address.
+
+
+    ## Features
+
+    - Send emails to multiple recipients
+
+    - HTML and plain text support
+
+    - Custom sender information
+
+    - Reply-to configuration
+
+    - Bearer token authentication
+
+
+    ## Rate Limits
+
+    - 1000 requests per minute per API key
+
+
+    ## Support
+
+    For technical support, please contact our API team.
+
+    '
+  version: 1.0.0
+servers:
+- url: https://api.wunderkind.co
+  description: Production server
+paths:
+  /email/send:
+    post:
+      summary: Send Email
+      description: 'Send an email to one or more recipients through the Wunderkind email delivery platform
+        to a subscribers
+
+        of the website id set by wunderkind.
+
+
+        This endpoint supports both HTML and plain text email content, custom sender information,
+
+        and flexible recipient management. All emails are processed synchronously.
+
+
+        **Important Notes:**
+
+        - All recipient email addresses must be valid and properly formatted
+
+        - The sender email address must be verified and susbcribed for the website id set by wunderkind
+
+        - If the email address is not subscribed, system silently ignores
+
+        - HTML content should be properly encoded and sanitized
+
+        - Large recipient lists may experience delayed processing
+
+        '
+      operationId: sendEmail
+      tags:
+      - Email
+      requestBody:
+        required: true
+        description: Email configuration and content
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailRequest'
+            examples:
+              simple_email:
+                summary: Simple HTML email
+                description: Basic email with HTML content to multiple recipients
+                value:
+                  to_emails:
+                  - recipient@example.com
+                  subject: Welcome to Our Service
+                  from: noreply@company.com
+                  from_name: Company Name
+                  body: <html><body><h1>Welcome!</h1><p>Thank you for joining us.</p></body></html>
+              full_featured_email:
+                summary: Full-featured email
+                description: Email with all optional fields included
+                value:
+                  to_emails:
+                  - user1@example.com
+                  - user2@example.com
+                  subject: Monthly Newsletter - March 2025
+                  from: newsletter@company.com
+                  from_name: Company Newsletter Team
+                  reply_to: support@company.com
+                  body: <html><body><h1>Monthly Update</h1><p>Here's what's new this month...</p></body></html>
+              plain_text_email:
+                summary: Plain text email
+                description: Simple plain text email without HTML formatting
+                value:
+                  to_emails:
+                  - customer@example.com
+                  subject: 'Order Confirmation #12345'
+                  from: orders@company.com
+                  from_name: Company Orders
+                  body: 'Thank you for your order! Your order #12345 has been confirmed and will be shipped
+                    soon.'
+      responses:
+        '200':
+          description: Email sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailResponse'
+              examples:
+                success_response:
+                  summary: Successful email send
+                  description: Response when emails are sent successfully
+                  value:
+                    status_code: Success
+                    message: Emails sent successfully
+        '400':
+          description: Bad request - Invalid input data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity - Validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication
+  schemas:
+    EmailRequest:
+      type: object
+      required:
+      - to_emails
+      - subject
+      - from
+      - body
+      properties:
+        to_emails:
+          type: array
+          items:
+            type: string
+            format: email
+          description: List of recipient email addresses
+          example:
+          - recipient1@example.com
+          - recipient2@example.com
+          minItems: 1
+          maxItems: 100
+        subject:
+          type: string
+          description: Email subject line
+          example: Your Email Subject
+        from:
+          type: string
+          format: email
+          description: Sender email address
+          example: sender@example.com
+        from_name:
+          type: string
+          description: Sender display name
+          example: Sender Name
+        reply_to:
+          type: string
+          format: email
+          description: Reply-to email address
+          example: reply@example.com
+        body:
+          type: string
+          description: Email body content (HTML or plain text)
+          example: <html><body>Hello, World!</body></html>
+    EmailResponse:
+      type: object
+      required:
+      - status_code
+      - message
+      properties:
+        status_code:
+          type: string
+          description: Status code indicating the result of the email send operation
+          example: Success
+          enum:
+          - Success
+          - Error
+        message:
+          type: string
+          description: Human-readable message describing the result
+          example: Emails sent successfully
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          description: Error details object
+          properties:
+            message:
+              type: string
+              description: Error type or code
+              example: InvalidApiKey
+            detail:
+              type: string
+              description: Human-readable error message with additional context
+              example: Please provide valid API key in the apikey query parameter.
+          required:
+          - message
+          - detail
+      required:
+      - error
+tags:
+- name: Email
+  description: Email sending operations

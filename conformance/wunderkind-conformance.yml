@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/ + https://www.wunderkind.co/privacy/ + https://developer.wunderkind.co
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securitySchemes in any harvested spec; auth is API keys, header pairs, and Bearer JWT.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404/500 on all hosts.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json; per-API ad hoc error envelopes (see errors/wunderkind-problem-types.yml).
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt not published on any probed host.
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset/Deprecation header support documented.
+- id: json-api
+  conforms: false
+  evidence: Plain JSON bodies; no JSON:API media type.
+- id: grpc-transcoding
+  conforms: true
+  evidence: >-
+    Event Ingestion OpenAPI is grpc-gateway generated (protobufAny,
+    rpcStatus components, Service_* operationIds), i.e. gRPC services
+    transcoded to REST.
+- id: e164-phone-numbers
+  conforms: true
+  evidence: Text Message API requires E.164 formatted phone numbers.
+- id: sha256-hashed-identifiers
+  conforms: true
+  evidence: >-
+    Identity surfaces exchange SHA-256 email hashes (Identity API responses,
+    Signals webhook RecipientSha256 field, lowercased before hashing).
+- id: gdpr
+  conforms: claimed
+  evidence: GDPR addressed in the Wunderkind privacy policy (https://www.wunderkind.co/privacy/).
+- id: pagination
+  conforms: not-applicable
+  evidence: No list endpoints on the externally documented surface.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key contract documented.

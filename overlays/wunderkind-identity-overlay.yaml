@@ -1,0 +1,37 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Wunderkind Identity API
+  version: 1.0.0
+extends: openapi/wunderkind-identity-openapi.yml
+actions:
+  - target: $.info
+    description: Add API Evangelist provenance and catalog context.
+    update:
+      x-apievangelist:
+        provider: wunderkind
+        harvested: '2026-07-21'
+        source: https://developer.wunderkind.co/reference/batch-id-lookup
+        notes: >-
+          Spec extracted verbatim from the OpenAPI definition embedded in the
+          ReadMe-hosted developer portal. The /v1/identity/lookup path carries
+          its own servers[] entry pointing at localhost because Wunderkind
+          documents it as an internal API; only the /id-resolution/* paths are
+          externally callable on api.wunderkind.co.
+  - target: $.info
+    description: Give the spec a real version in our derived views (upstream says "version not set").
+    update:
+      x-apievangelist-version: v1
+  - target: $.paths['/id-resolution/v1/identity/lookup/batch'].post
+    description: Classify for agent consumers - batch PII resolution is a sensitive read.
+    update:
+      x-agentic-access:
+        action-class: connected
+        consequence: read
+        data-sensitivity: personal-data
+  - target: $.paths['/id-resolution/v1/identity/enckey'].post
+    description: Classify for agent consumers - returns the client encryption key.
+    update:
+      x-agentic-access:
+        action-class: connected
+        consequence: read
+        data-sensitivity: secret-material

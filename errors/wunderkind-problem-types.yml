@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/ (harvested Wunderkind OpenAPI definitions) + https://developer.wunderkind.co/reference
+format: mixed
+notes: >-
+  Wunderkind does not use RFC 9457 problem+json. Error envelopes differ per
+  API: the Email API returns {error: {message, detail}}; the Identity API
+  returns {name}; the Text Message API returns {code, message, details[]};
+  the Event Ingestion API returns a grpc-gateway rpcStatus
+  {code, message, details[]} on its default error response.
+problems:
+- status: 400
+  title: Bad Request
+  detail: Invalid input data; on server-side APIs a 400 also indicates an invalid or missing API key.
+  source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identitylookupbatch
+- status: 400
+  title: Bad request - Invalid input data
+  envelope: '{error: {message, detail}}'
+  source_operation: openapi/wunderkind-email-openapi.yml#sendEmail
+- status: 401
+  title: Unauthorized
+  detail: Invalid or missing authentication token / API key.
+  source_operation: openapi/wunderkind-email-openapi.yml#sendEmail
+- status: 401
+  title: Unauthorized
+  source_operation: openapi/wunderkind-ucrm-openapi.yml#external_subscribe
+- status: 403
+  title: Forbidden
+  source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identitylookupbatch
+- status: 404
+  title: Identity not found
+  source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identitylookupbatch
+- status: 422
+  title: Unprocessable Entity - Validation errors
+  source_operation: openapi/wunderkind-email-openapi.yml#sendEmail
+- status: 429
+  title: Too Many Requests
+  detail: Rate limit exceeded (Identity API; Text Message API documents 429 as "Denied (exceed the limits)").
+  source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identitylookupbatch
+- status: 500
+  title: Internal Server Error
+  source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identitylookupbatch
+- status: 500
+  title: Internal Application Error
+  source_operation: openapi/wunderkind-ucrm-openapi.yml#external_subscribe
+- status: default
+  title: gRPC-gateway rpcStatus error
+  envelope: '{code, message, details[]}'
+  detail: All Event Ingestion operations return a generic rpcStatus error on failure.
+  source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_Visit
+text_message_api:
+  docs: https://developer.wunderkind.co/reference/bulk-text-message-api
+  envelope: '{code, message, details[]}'
+  codes:
+  - status: 401
+    meaning: Unauthorized
+  - status: 403
+    meaning: Forbidden
+  - status: 429
+    meaning: Denied (exceed the limits)
+  - status: 4XX
+    meaning: Bad Request (other 4xx)
+  - status: 5XX
+    meaning: Internal Server Error
+  bulk_partial_failure: >-
+    Bulk sends return 200 with successSent[] and failedSent[] arrays; each
+    failed entry carries errorMessage, phone, and email fields.

@@ -1,0 +1,61 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/ + https://developer.wunderkind.co/docs/authenticate-api-requests
+notes: >-
+  Cross-cutting request/response semantics observed across the Wunderkind
+  API surface (Email, Identity, UCRM, Event Ingestion on api.wunderkind.co;
+  Text Message on api.wknd.ai). Derived from the harvested OpenAPI plus the
+  developer-portal docs; Wunderkind publishes no single conventions page.
+authentication:
+  style: per-surface API keys
+  detail: >-
+    Private key as "Authorization: apikey {apikey}" on api.wunderkind.co;
+    Bearer JWT on the Email API; X-Client-ID/X-Client-Secret header pair on
+    api.wknd.ai; public numeric website ID (site ID) for client-side
+    endpoints on api.bounceexchange.com.
+  artifact: ../authentication/wunderkind-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key header or replay-safety contract is documented on any
+    Wunderkind API. Text Message sends generate a server-side messageId per
+    request; callers correlate via callbackData. Bulk sends report per-item
+    success/failure instead of transactional semantics.
+pagination:
+  style: none
+  notes: >-
+    The externally documented surface is command/event shaped (sends,
+    lookups, subscribes, event ingestion); no list endpoints or pagination
+    parameters are published.
+field_expansion:
+  supported: false
+metadata:
+  supported: partial
+  notes: >-
+    Signals webhook payloads and Text API sends carry caller-defined
+    passthrough data (WkAdditionalProperties key/value arrays; callbackData
+    JSON string on text sends; sendPurpose reporting tag).
+request_tracing:
+  request_id_header: null
+  notes: No documented request-id/trace header. Text sends return a messageId (UUID) used for status lookup.
+versioning:
+  style: uri-path (v1) on Identity/UCRM; date-versioned OpenAPI on Event Ingestion
+  artifact: ../lifecycle/wunderkind-lifecycle.yml
+error_envelope:
+  style: per-API
+  detail: >-
+    Email: {error: {message, detail}}; Identity: {name}; Text: {code,
+    message, details[]}; Event Ingestion: grpc-gateway rpcStatus {code,
+    message, details[]}.
+  artifact: ../errors/wunderkind-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  notes: >-
+    Documented numeric limits (Email 1000 req/min per API key; Text 300
+    req/s per website) with 429 responses; no X-RateLimit-* or Retry-After
+    headers are documented.
+  artifact: ../rate-limits/wunderkind-rate-limits.yml
+webhooks:
+  direction: outbound (Signals)
+  auth: static headers or Basic auth, plus a published IP allowlist of 20 source addresses
+  artifact: ../asyncapi/wunderkind-signals-webhooks.yml

@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Wunderkind UCRM API
+  version: 1.0.0
+extends: openapi/wunderkind-ucrm-openapi.yml
+actions:
+  - target: $.info
+    description: Add API Evangelist provenance and catalog context.
+    update:
+      x-apievangelist:
+        provider: wunderkind
+        harvested: '2026-07-21'
+        source: https://developer.wunderkind.co/reference/external_subscribe
+        notes: >-
+          Spec extracted verbatim from the OpenAPI definition embedded in the
+          ReadMe-hosted developer portal. Authentication is the private API
+          key pattern (Authorization: apikey {apikey}) modeled as a header
+          parameter rather than a securityScheme.
+  - target: $.paths['/ucrm/v1/subscribe'].put
+    description: Classify for agent consumers - mutates subscription state.
+    update:
+      x-agentic-access:
+        action-class: acting
+        consequence: write
+  - target: $.paths['/ucrm/v1/unsubscribe'].put
+    description: Classify for agent consumers - mutates subscription state.
+    update:
+      x-agentic-access:
+        action-class: acting
+        consequence: write
+  - target: $
+    description: Record contract-quality gaps observed in the upstream spec.
+    update:
+      x-apievangelist-gaps:
+        - auth is a per-operation Authorization header parameter, not a components.securityScheme
