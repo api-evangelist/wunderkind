@@ -196,6 +196,8 @@ apis:
   - type: APIReference
     url: https://developer.wunderkind.co/reference/service_visit
 common:
+- type: Overlay
+  url: overlays/wunderkind-email-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/wunderkind-agentic-access.yml
 - type: DomainSecurity
