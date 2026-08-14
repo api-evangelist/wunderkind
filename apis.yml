@@ -33,7 +33,7 @@ x-tier: full
 x-tier-reason: enriched-provider
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 tags:
 - Company
 - Marketing
@@ -88,7 +88,7 @@ apis:
 - aid: wunderkind:wunderkind-id-resolution-api
   name: Wunderkind Id Resolution API
   description: The Id Resolution API from Wunderkind — 3 operation(s) for id resolution.
-  humanURL: https://developer.wunderkind.co/reference/sendemail
+  humanURL: https://developer.wunderkind.co/reference/batch-id-lookup
   baseURL: https://api.wunderkind.co
   tags:
   - Id Resolution
@@ -110,7 +110,7 @@ apis:
 - aid: wunderkind:wunderkind-identity-api
   name: Wunderkind Identity API
   description: The Identity API from Wunderkind — 2 operation(s) for identity.
-  humanURL: https://developer.wunderkind.co/reference/sendemail
+  humanURL: https://developer.wunderkind.co/reference/identity-api
   baseURL: https://api.wunderkind.co
   tags:
   - Identity
@@ -132,7 +132,7 @@ apis:
 - aid: wunderkind:wunderkind-send-event-api
   name: Wunderkind Send Event API
   description: The Send Event API from Wunderkind — 11 operation(s) for send event.
-  humanURL: https://developer.wunderkind.co/reference/sendemail
+  humanURL: https://developer.wunderkind.co/docs/event-ingestion-api-guide
   baseURL: https://api.wunderkind.co
   tags:
   - Send Event
@@ -154,7 +154,7 @@ apis:
 - aid: wunderkind:wunderkind-ucrm-api
   name: Wunderkind Ucrm API
   description: The Ucrm API from Wunderkind — 2 operation(s) for ucrm.
-  humanURL: https://developer.wunderkind.co/reference/sendemail
+  humanURL: https://developer.wunderkind.co/reference/external_subscribe
   baseURL: https://api.wunderkind.co
   tags:
   - Ucrm
@@ -175,9 +175,15 @@ apis:
     url: https://developer.wunderkind.co/reference/service_visit
 - aid: wunderkind:wunderkind-wunderhook-api
   name: Wunderkind Wunderhook API
-  description: The Wunderhook API from Wunderkind — 1 operation(s) for wunderhook.
-  humanURL: https://developer.wunderkind.co/reference/sendemail
-  baseURL: https://api.wunderkind.co
+  description: >-
+    The Signals Wunderhook consumer contract — the single POST endpoint a client
+    stands up to RECEIVE Wunderkind Signals webhook deliveries. The base URL is
+    therefore templated and client-owned (https://{yourendpoint}), not a
+    Wunderkind-operated host; Wunderkind is the sender. Deliveries are
+    authenticated with static headers or Basic auth from a published 20-address
+    IP allowlist, with no HMAC signing.
+  humanURL: https://developer.wunderkind.co/reference/signalswebhook
+  baseURL: https://{yourendpoint}
   tags:
   - Wunderhook
   properties:
@@ -198,6 +204,12 @@ apis:
 common:
 - type: Overlay
   url: overlays/wunderkind-email-overlay.yaml
+- type: Overlay
+  url: overlays/wunderkind-identity-overlay.yaml
+- type: Overlay
+  url: overlays/wunderkind-ucrm-overlay.yaml
+- type: Overlay
+  url: overlays/wunderkind-event-ingestion-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/wunderkind-agentic-access.yml
 - type: DomainSecurity
@@ -240,8 +252,6 @@ common:
   type: Packages
 - url: packages/wunderkind-packages.yml
   type: SDKs
-- url: well-known/wunderkind-well-known.yml
-  type: WellKnown
 - url: llms/wunderkind-llms.txt
   type: LLMsTxt
 - url: mcp/wunderkind-mcp.yml
@@ -260,13 +270,29 @@ common:
   type: AgentSkill
 - url: security/wunderkind-trust-center.yml
   type: TrustCenter
+- url: plans/wunderkind-plans-pricing.yml
+  type: Plans
+- url: https://www.wunderkind.co/blog/article/wunderkinds-commitment-to-privacy-compliance/
+  type: Compliance
+- url: examples/wunderkind-send-email-example.json
+  type: Examples
+- url: examples/wunderkind-subscribe-users-example.json
+  type: Examples
+- url: examples/wunderkind-unsubscribe-users-example.json
+  type: Examples
+- url: examples/wunderkind-identity-lookup-example.json
+  type: Examples
+- url: examples/wunderkind-signals-webhook-delivery-example.json
+  type: Examples
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-13'
   status: enriched
-  artifacts_added: 30
+  artifacts_added: 6
   pass: local-v1
+x-coverage:
+  state: covered
