@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wunderkind Email Send Event API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Send Event",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add to Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/add-to-cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a user has added an item to their cart"
+        },
+        {
+          "info": {
+            "name": "App Push Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/app-push-action",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a push notification was delivered to a device"
+        },
+        {
+          "info": {
+            "name": "Device AppPush Toggle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/app-push-toggle",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a device toggled app push notifications"
+        },
+        {
+          "info": {
+            "name": "Device AppPush Token Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/app-push-token-set",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a device set a new app push token"
+        },
+        {
+          "info": {
+            "name": "Custom Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/custom",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a custom event with a dynamic title/name"
+        },
+        {
+          "info": {
+            "name": "Empty Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/empty-cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a user has emptied their cart. This event should only be triggered when a user has items in their cart and empties it. Not every time a user opens their empty cart."
+        },
+        {
+          "info": {
+            "name": "Order Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/order-transaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a user has completed an order transaction. Must be sent in addition to the page view event."
+        },
+        {
+          "info": {
+            "name": "Page View",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/page-view",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a user has viewed a page; this should also include data of the viewed category, search, and/or items."
+        },
+        {
+          "info": {
+            "name": "Track Link Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/track-link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This should be emitted each time a deep link opens into a mobile application only. Pass all deeplink URL in their final form including all URL parameters. If this is a shortened URL (e.g. URL) - please resolve/convert to the final URL before passing."
+        },
+        {
+          "info": {
+            "name": "User Identified",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/user-identified",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a user has been identified. Should include as much information on the user as possible."
+        },
+        {
+          "info": {
+            "name": "Visit/Session Started",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/events/visit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records that a user visit/session"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,301 @@
+{
+  "item": [
+    {
+      "id": "5cab0874-6d78-4fb4-b9c4-9ef8854299ea",
+      "name": "Email",
+      "description": {
+        "content": "Email sending operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a085f124-5c11-41ba-be5d-a1813be1e90c",
+          "name": "Send Email",
+          "request": {
+            "name": "Send Email",
+            "description": {
+              "content": "Send an email to one or more recipients through the Wunderkind email delivery platform to a subscribers\nof the website id set by wunderkind.\n\nThis endpoint supports both HTML and plain text email content, custom sender information,\nand flexible recipient management. All emails are processed synchronously.\n\n**Important Notes:**\n- All recipient email addresses must be valid and properly formatted\n- The sender email address must be verified and susbcribed for the website id set by wunderkind\n- If the email address is not subscribed, system silently ignores\n- HTML content should be properly encoded and sanitized\n- Large recipient lists may experience delayed processing\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "email",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to_emails\": [\n    \"<email>\"\n  ],\n  \"subject\": \"<string>\",\n  \"from\": \"<email>\",\n  \"body\": \"<string>\",\n  \"from_name\": \"<string>\",\n  \"reply_to\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1c44a63-9518-46eb-a217-e1995aea454c",
+              "name": "Email sent successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_emails\": [\n    \"recipient@example.com\"\n  ],\n  \"subject\": \"Welcome to Our Service\",\n  \"from\": \"noreply@company.com\",\n  \"from_name\": \"Company Name\",\n  \"body\": \"<html><body><h1>Welcome!</h1><p>Thank you for joining us.</p></body></html>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": \"Success\",\n  \"message\": \"Emails sent successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09c9eba8-6dcc-4582-8b2e-8efb04678678",
+              "name": "Bad request - Invalid input data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_emails\": [\n    \"recipient@example.com\"\n  ],\n  \"subject\": \"Welcome to Our Service\",\n  \"from\": \"noreply@company.com\",\n  \"from_name\": \"Company Name\",\n  \"body\": \"<html><body><h1>Welcome!</h1><p>Thank you for joining us.</p></body></html>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"InvalidApiKey\",\n    \"detail\": \"Please provide valid API key in the apikey query parameter.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f992b6e8-a596-499f-b526-b43f10098438",
+              "name": "Unauthorized - Invalid or missing authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_emails\": [\n    \"recipient@example.com\"\n  ],\n  \"subject\": \"Welcome to Our Service\",\n  \"from\": \"noreply@company.com\",\n  \"from_name\": \"Company Name\",\n  \"body\": \"<html><body><h1>Welcome!</h1><p>Thank you for joining us.</p></body></html>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"InvalidApiKey\",\n    \"detail\": \"Please provide valid API key in the apikey query parameter.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b093281c-cb73-47a0-afd3-1436d5c5fe0c",
+              "name": "Unprocessable Entity - Validation errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_emails\": [\n    \"recipient@example.com\"\n  ],\n  \"subject\": \"Welcome to Our Service\",\n  \"from\": \"noreply@company.com\",\n  \"from_name\": \"Company Name\",\n  \"body\": \"<html><body><h1>Welcome!</h1><p>Thank you for joining us.</p></body></html>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"InvalidApiKey\",\n    \"detail\": \"Please provide valid API key in the apikey query parameter.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6a24c16-a289-424d-bf6f-16fb2034c33f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to_emails\": [\n    \"recipient@example.com\"\n  ],\n  \"subject\": \"Welcome to Our Service\",\n  \"from\": \"noreply@company.com\",\n  \"from_name\": \"Company Name\",\n  \"body\": \"<html><body><h1>Welcome!</h1><p>Thank you for joining us.</p></body></html>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"InvalidApiKey\",\n    \"detail\": \"Please provide valid API key in the apikey query parameter.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wunderkind.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e978db96-7492-4e1b-a7f9-84cac6e7d880",
+    "name": "Wunderkind Email API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.\n\n## Features\n- Send emails to multiple recipients\n- HTML and plain text support\n- Custom sender information\n- Reply-to configuration\n- Bearer token authentication\n\n## Rate Limits\n- 1000 requests per minute per API key\n\n## Support\nFor technical support, please contact our API team.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,78 +1,114 @@
-generated: '2026-07-21'
-method: searched
+generated: '2026-08-13'
+method: probed
+source: live HTTP probe of every Wunderkind host named in apis.yml + OpenAPI servers[]
 description: >-
   Probe of the /.well-known/ discovery surface (plus /llms.txt) across every
   Wunderkind host referenced by apis.yml and the harvested OpenAPI servers.
   Every status was recorded at fetch time; absence (404/500/503) is valid
-  observed data. The only published discovery document is /llms.txt on the
-  developer portal, which advertises itself on the portal homepage as the
-  AI-agent index of all docs pages and OpenAPI-described endpoints.
+  observed data. Re-probed 2026-08-13 and the result is unchanged from
+  2026-07-21: NO /.well-known/ path on any Wunderkind host returns a real
+  document. The only published discovery document is /llms.txt on the
+  developer portal (text/plain, 200), which is catalogued separately as
+  llms/wunderkind-llms.txt with its own LLMsTxt pointer.
+verdict: no-well-known-documents
+pointer_note: >-
+  NO `WellKnown` pointer is emitted in apis.yml for this provider, and the
+  one carried since 2026-07-21 has been removed. Every /.well-known/ path
+  probed returns 404, 500 or 503 except on platform.wunderkind.co, which is a
+  single-page-application catch-all: it answers HTTP 200 with the same
+  text/html app shell for /.well-known/security.txt,
+  /.well-known/openid-configuration, /.well-known/oauth-authorization-server,
+  /.well-known/oauth-protected-resource, /.well-known/api-catalog,
+  /.well-known/ai-plugin.json AND /llms.txt alike. A 200 that returns an
+  HTML/SPA shell is not a document; it is recorded here as a miss.
 hosts:
-  - host: https://www.wunderkind.co
-    documents:
-      - path: /.well-known/security.txt
-        status: 404
-      - path: /.well-known/openid-configuration
-        status: 404
-      - path: /.well-known/oauth-authorization-server
-        status: 404
-      - path: /.well-known/api-catalog
-        status: 404
-      - path: /.well-known/ai-plugin.json
-        status: 404
-      - path: /llms.txt
-        status: 404
-  - host: https://developer.wunderkind.co
-    documents:
-      - path: /.well-known/security.txt
-        status: 404
-      - path: /.well-known/openid-configuration
-        status: 404
-      - path: /.well-known/oauth-authorization-server
-        status: 404
-      - path: /.well-known/api-catalog
-        status: 404
-      - path: /.well-known/ai-plugin.json
-        status: 404
-      - path: /llms.txt
-        status: 200
-        file: ../llms/wunderkind-llms.txt
-  - host: https://api.wunderkind.co
-    note: API gateway returns HTTP 500 (application/json error envelope) for all unrouted paths.
-    documents:
-      - path: /.well-known/security.txt
-        status: 500
-      - path: /.well-known/openid-configuration
-        status: 500
-      - path: /.well-known/oauth-authorization-server
-        status: 500
-      - path: /.well-known/api-catalog
-        status: 500
-      - path: /.well-known/ai-plugin.json
-        status: 500
-  - host: https://api.wknd.ai
-    note: Text Message API host; unrouted paths return 404 text/plain.
-    documents:
-      - path: /.well-known/security.txt
-        status: 404
-      - path: /.well-known/openid-configuration
-        status: 404
-      - path: /.well-known/oauth-authorization-server
-        status: 404
-      - path: /.well-known/api-catalog
-        status: 404
-      - path: /.well-known/ai-plugin.json
-        status: 404
-  - host: https://api.bounceexchange.com
-    note: Legacy client-side (public site-ID) API host; returned 503 to all probe paths at fetch time.
-    documents:
-      - path: /.well-known/security.txt
-        status: 503
-      - path: /.well-known/openid-configuration
-        status: 503
-      - path: /.well-known/oauth-authorization-server
-        status: 503
-      - path: /.well-known/api-catalog
-        status: 503
-      - path: /.well-known/ai-plugin.json
-        status: 503
+- host: https://www.wunderkind.co
+  documents:
+  - {path: /.well-known/security.txt, status: 404, content_type: text/html}
+  - {path: /.well-known/openid-configuration, status: 404, content_type: text/html}
+  - {path: /.well-known/oauth-authorization-server, status: 404, content_type: text/html}
+  - {path: /.well-known/oauth-protected-resource, status: 404, content_type: text/html}
+  - {path: /.well-known/api-catalog, status: 404, content_type: text/html}
+  - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/html}
+  - {path: /llms.txt, status: 404, content_type: text/html}
+- host: https://developer.wunderkind.co
+  note: ReadMe-hosted developer portal; serves a real /llms.txt as text/plain.
+  documents:
+  - {path: /.well-known/security.txt, status: 404, content_type: text/html}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/html}
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain; charset=utf-8
+    file: ../llms/wunderkind-llms.txt
+    note: >-
+      Real document, saved verbatim. Not a /.well-known/ path, so it does not
+      satisfy the well-known catalog surface; it carries its own LLMsTxt pointer.
+- host: https://api.wunderkind.co
+  note: >-
+    Apigee-fronted API gateway. Every unrouted path returns HTTP 500 with an
+    application/json fault envelope ("Execution of JS-check-auth-type failed"),
+    not a 404.
+  documents:
+  - {path: /.well-known/security.txt, status: 500, content_type: application/json}
+  - {path: /.well-known/openid-configuration, status: 500, content_type: application/json}
+  - {path: /.well-known/oauth-authorization-server, status: 500, content_type: application/json}
+  - {path: /.well-known/oauth-protected-resource, status: 500, content_type: application/json}
+  - {path: /.well-known/api-catalog, status: 500, content_type: application/json}
+  - {path: /.well-known/ai-plugin.json, status: 500, content_type: application/json}
+  - {path: /llms.txt, status: 500, content_type: application/json}
+- host: https://api.wknd.ai
+  note: Text Message API host (Google front end); unrouted paths return 404 text/plain.
+  documents:
+  - {path: /.well-known/security.txt, status: 404, content_type: text/plain}
+  - {path: /.well-known/openid-configuration, status: 404, content_type: text/plain}
+  - {path: /.well-known/oauth-authorization-server, status: 404, content_type: text/plain}
+  - {path: /.well-known/oauth-protected-resource, status: 404, content_type: text/plain}
+  - {path: /.well-known/api-catalog, status: 404, content_type: text/plain}
+  - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/plain}
+  - {path: /llms.txt, status: 404, content_type: text/plain}
+- host: https://api.bounceexchange.com
+  note: >-
+    Legacy client-side (public site-ID) API host; returned 503 with an empty
+    body to every probe path on both 2026-07-21 and 2026-08-13.
+  documents:
+  - {path: /.well-known/security.txt, status: 503}
+  - {path: /.well-known/openid-configuration, status: 503}
+  - {path: /.well-known/oauth-authorization-server, status: 503}
+  - {path: /.well-known/oauth-protected-resource, status: 503}
+  - {path: /.well-known/api-catalog, status: 503}
+  - {path: /.well-known/ai-plugin.json, status: 503}
+  - {path: /llms.txt, status: 503}
+- host: https://platform.wunderkind.co
+  note: >-
+    Customer console SPA. FALSE POSITIVE: answers 200 text/html with the same
+    application shell for every path, including paths that cannot exist. None
+    of these are documents; all are recorded as misses.
+  spa_catch_all: true
+  documents:
+  - {path: /.well-known/security.txt, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/openid-configuration, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/oauth-protected-resource, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/api-catalog, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/ai-plugin.json, status: 200, content_type: text/html, document: false}
+  - {path: /llms.txt, status: 200, content_type: text/html, document: false}
+agent_card_probe:
+  note: >-
+    A2A agent card paths probed on the same pass (2026-08-13). No host serves
+    an AgentCard; platform.wunderkind.co returns the SPA shell. No a2a/
+    artifact is written and no AgentCard pointer is emitted.
+  results:
+  - {url: 'https://www.wunderkind.co/.well-known/agent-card.json', status: 404}
+  - {url: 'https://www.wunderkind.co/.well-known/agent.json', status: 404}
+  - {url: 'https://developer.wunderkind.co/.well-known/agent-card.json', status: 404}
+  - {url: 'https://developer.wunderkind.co/.well-known/agent.json', status: 404}
+  - {url: 'https://api.wunderkind.co/.well-known/agent-card.json', status: 500}
+  - {url: 'https://api.wunderkind.co/.well-known/agent.json', status: 500}
+  - {url: 'https://api.wknd.ai/.well-known/agent-card.json', status: 404}
+  - {url: 'https://api.wknd.ai/.well-known/agent.json', status: 404}
+  - {url: 'https://platform.wunderkind.co/.well-known/agent-card.json', status: 200, document: false, note: SPA HTML shell}
+  - {url: 'https://platform.wunderkind.co/.well-known/agent.json', status: 200, document: false, note: SPA HTML shell}

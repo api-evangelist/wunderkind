@@ -29,8 +29,13 @@ info:
     '
   version: 1.0.0
 servers:
-- url: https://api.wunderkind.co
-  description: Production server
+- url: https://{yourendpoint}
+  description: >-
+    Client-owned Signals webhook consumer endpoint, verbatim from the
+    provider-published Wunderhook definition
+    (openapi/_original/wunderkind-signals-wunderhook-openapi.yml). Wunderkind is
+    the SENDER of these requests; the host is the client's, not Wunderkind's, so
+    this must not be rewritten to api.wunderkind.co.
 tags:
 - name: Wunderhook
 paths:

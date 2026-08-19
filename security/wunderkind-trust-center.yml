@@ -1,23 +1,51 @@
-generated: '2026-07-21'
+generated: '2026-08-13'
 method: searched
 probe: true
 url: https://trust.wunderkind.co/
 platform: Vanta Trust Center
-certifications: []
+certifications:
+- SOC 2 Type 2
+- ISO 27001
+compliance_programs:
+- GDPR
+- CCPA
+- US state privacy laws
+memberships:
+- Network Advertising Initiative (NAI)
+- Interactive Advertising Bureau (IAB)
+- European Digital Advertising Alliance (EDAA)
+compliance_page: https://www.wunderkind.co/blog/article/wunderkinds-commitment-to-privacy-compliance/
 notes: >-
-  trust.wunderkind.co is live (HTTP 200) and titled "Wunderkind Trust
-  Center", hosted on Vanta (assets.vanta.com trust-report application,
-  signature manifest, and an app.vanta.com document link are embedded in the
-  page shell). The certification list is rendered client-side by the Vanta
-  SPA and was not extractable by this probe, so no certification names are
-  asserted here. The Wunderkind privacy policy addresses GDPR.
+  trust.wunderkind.co is live (HTTP 200) and titled "Wunderkind Trust Center",
+  hosted on Vanta (assets.vanta.com trust-report application, signature
+  manifest, and an app.vanta.com document link are embedded in the page shell).
+  The certification list is rendered client-side by the Vanta SPA and its
+  GraphQL backend rejects unsigned requests ("Missing `signature` or
+  `signedAt`", HTTP 400), so nothing is extractable from the trust center
+  itself. The certification names recorded above are NOT taken from the trust
+  center; they come from Wunderkind's own first-party posts on wunderkind.co,
+  which state that Wunderkind "renewed both our SOC2 and ISO 27001
+  certifications" in 2024 and announce a SOC 2 Type 2 attestation audited by
+  A-LIGN. The privacy policy and the compliance post address GDPR, CCPA and
+  similar US state privacy laws.
 evidence:
 - source: https://trust.wunderkind.co/
   kind: page
+  status: 200
   detail: '<title>Wunderkind Trust Center</title>; Vanta trust-report JS application shell'
+- source: https://trust.wunderkind.co/graphql
+  kind: probe
+  status: 400
+  detail: 'Vanta trust-report GraphQL requires a signed request: {"errors":[{"message":"Missing `signature` or `signedAt`"}]} — certification list not machine-readable'
 - source: https://trust.wunderkind.co/
   kind: document-link
   detail: https://app.vanta.com/doc?s=qsm7hcih4jdrc8mrfmqsp
+- source: https://www.wunderkind.co/blog/article/wunderkinds-commitment-to-privacy-compliance/
+  kind: page
+  detail: 'first-party statement: SOC2 and ISO 27001 certifications renewed in 2024; GDPR, CCPA and similar US state privacy laws; NAI, IAB and EDAA memberships'
+- source: https://www.wunderkind.co/blog/article/soc-2-attestation/
+  kind: page
+  detail: 'first-party announcement of AICPA SOC 2 Type 2 attestation (security and confidentiality), audit performed by A-LIGN'
 - source: https://www.wunderkind.co/privacy/
   kind: page
   detail: GDPR referenced in the privacy policy

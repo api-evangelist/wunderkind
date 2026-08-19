@@ -1,0 +1,1539 @@
+{
+  "item": [
+    {
+      "id": "b8053ef6-0525-42c7-be12-198bd787b784",
+      "name": "Send Event",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31886fb0-9d5c-4c6c-9304-c709d95519ff",
+          "name": "Add to Cart",
+          "request": {
+            "name": "Add to Cart",
+            "description": {
+              "content": "Records that a user has added an item to their cart",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "add-to-cart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"<string>\",\n      \"emailSha256\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phoneSha256\": \"<string>\",\n      \"partnerId\": \"<string>\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"<string>\",\n      \"userAgent\": \"<string>\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"location\": {\n      \"timezoneOffset\": \"<integer>\",\n      \"latitude\": \"<float>\",\n      \"longitude\": \"<float>\"\n    }\n  },\n  \"itemId\": \"<string>\",\n  \"cartToken\": \"<string>\",\n  \"extra\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"agent\": \"<string>\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\",\n  \"sku\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b6f05e7-8093-431e-9396-0c3959dbbfc1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "add-to-cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"itemId\": \"123456\",\n  \"cartToken\": \"123456\",\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\",\n  \"sku\": \"SKU123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b1e3ff7-013a-4821-9920-aaf3bf93a90f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "add-to-cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"itemId\": \"123456\",\n  \"cartToken\": \"123456\",\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\",\n  \"sku\": \"SKU123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2707,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {}\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd66c72c-59b9-4f15-b53c-f4428d2d3d81",
+          "name": "App Push Action",
+          "request": {
+            "name": "App Push Action",
+            "description": {
+              "content": "Records that a push notification was delivered to a device",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "app-push-action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"<string>\",\n        \"emailSha256\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"phoneSha256\": \"<string>\",\n        \"partnerId\": \"<string>\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"<string>\",\n        \"userAgent\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"location\": {\n        \"timezoneOffset\": \"<integer>\",\n        \"latitude\": \"<float>\",\n        \"longitude\": \"<float>\"\n      }\n    },\n    \"agent\": \"<string>\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"wunderkindPayload\": \"<object>\",\n  \"appPushActionType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a9bcf3b-1c24-4d00-863a-2c835facfb46",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "app-push-action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"wunderkindPayload\": \"<object>\",\n  \"appPushActionType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d33cd2d-08a7-4208-9c25-67d5d4329786",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "app-push-action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"wunderkindPayload\": \"<object>\",\n  \"appPushActionType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb0285f4-b2e3-4410-9445-c95974b4c7b2",
+          "name": "Device AppPush Toggle",
+          "request": {
+            "name": "Device AppPush Toggle",
+            "description": {
+              "content": "Records that a device toggled app push notifications",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "app-push-toggle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"<string>\",\n        \"emailSha256\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"phoneSha256\": \"<string>\",\n        \"partnerId\": \"<string>\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\",\n          \"key_4\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"<string>\",\n        \"userAgent\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"location\": {\n        \"timezoneOffset\": \"<integer>\",\n        \"latitude\": \"<float>\",\n        \"longitude\": \"<float>\"\n      }\n    },\n    \"agent\": \"<string>\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"toggle\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6fc2259d-7851-45fd-9294-7a54c69d241c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "app-push-toggle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"toggle\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d349fbaf-2c88-473f-ae00-9ca3b1590a32",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "app-push-toggle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"toggle\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cf27c18-ecae-4c00-b96f-6864d9d9b306",
+          "name": "Device AppPush Token Set",
+          "request": {
+            "name": "Device AppPush Token Set",
+            "description": {
+              "content": "Records that a device set a new app push token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "app-push-token-set"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"<string>\",\n        \"emailSha256\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"phoneSha256\": \"<string>\",\n        \"partnerId\": \"<string>\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"<string>\",\n        \"userAgent\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"location\": {\n        \"timezoneOffset\": \"<integer>\",\n        \"latitude\": \"<float>\",\n        \"longitude\": \"<float>\"\n      }\n    },\n    \"agent\": \"<string>\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"key_0\": \"<string>\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1bb92aa-3ae7-4e0e-bdf9-d51fad67f088",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "app-push-token-set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d09b7a4-27dd-48fa-992b-26d26632e5ef",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "app-push-token-set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db644121-e3e7-4776-acc8-2f640e1adb23",
+          "name": "Custom Event",
+          "request": {
+            "name": "Custom Event",
+            "description": {
+              "content": "Records a custom event with a dynamic title/name",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "custom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"<string>\",\n        \"emailSha256\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"phoneSha256\": \"<string>\",\n        \"partnerId\": \"<string>\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"<string>\",\n        \"userAgent\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"location\": {\n        \"timezoneOffset\": \"<integer>\",\n        \"latitude\": \"<float>\",\n        \"longitude\": \"<float>\"\n      }\n    },\n    \"agent\": \"<string>\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"key_0\": \"<string>\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c4c78c5-1c6b-44c8-92e1-b1a6d44944d0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "custom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"title\": \"samsevent\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ceac28f-7429-4cdd-9c70-3060fb48ac48",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "custom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"title\": \"samsevent\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea1d3e13-3ffd-4e47-967b-a6ab062cfd97",
+          "name": "Empty Cart",
+          "request": {
+            "name": "Empty Cart",
+            "description": {
+              "content": "Records that a user has emptied their cart. This event should only be triggered when a user has items in their cart and empties it. Not every time a user opens their empty cart.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "empty-cart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"<string>\",\n      \"emailSha256\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phoneSha256\": \"<string>\",\n      \"partnerId\": \"<string>\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"<string>\",\n      \"userAgent\": \"<string>\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"location\": {\n      \"timezoneOffset\": \"<integer>\",\n      \"latitude\": \"<float>\",\n      \"longitude\": \"<float>\"\n    }\n  },\n  \"extra\": {\n    \"key_0\": \"<string>\"\n  },\n  \"agent\": \"<string>\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93f22246-1f6f-4cbe-b21a-63cda54b7dc2",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "empty-cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09506b79-558e-4500-9e72-8d88aadb1d54",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "empty-cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aca4d4f-f72e-4e0d-8731-99e79d718308",
+          "name": "Order Transaction",
+          "request": {
+            "name": "Order Transaction",
+            "description": {
+              "content": "Records that a user has completed an order transaction. Must be sent in addition to the page view event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "order-transaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"<string>\",\n      \"emailSha256\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phoneSha256\": \"<string>\",\n      \"partnerId\": \"<string>\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"<string>\",\n      \"userAgent\": \"<string>\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"location\": {\n      \"timezoneOffset\": \"<integer>\",\n      \"latitude\": \"<float>\",\n      \"longitude\": \"<float>\"\n    }\n  },\n  \"orderId\": \"<string>\",\n  \"additionalOrderIds\": {\n    \"key_0\": \"<string>\"\n  },\n  \"total\": {\n    \"amount\": \"<double>\",\n    \"currency\": \"<string>\"\n  },\n  \"shipping\": {\n    \"amount\": \"<double>\",\n    \"currency\": \"<string>\"\n  },\n  \"tax\": {\n    \"amount\": \"<double>\",\n    \"currency\": \"<string>\"\n  },\n  \"discounts\": {\n    \"amount\": \"<double>\",\n    \"currency\": \"<string>\"\n  },\n  \"couponCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currency\": \"<string>\"\n      },\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": {\n        \"amount\": \"<double>\",\n        \"currency\": \"<string>\"\n      },\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"extra\": {\n    \"key_0\": \"<string>\"\n  },\n  \"agent\": \"<string>\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "55bd0dd6-03bf-4cb6-9703-cb992c7de5ea",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "order-transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"orderId\": \"123456\",\n  \"additionalOrderIds\": {\n    \"partner_order_id\": \"123456\",\n    \"shopify_order_id\": \"8196131534384\"\n  },\n  \"total\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"shipping\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"tax\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"discounts\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"couponCodes\": [\n    \"SAVE10\",\n    \"FREESHIP\"\n  ],\n  \"items\": [\n    {\n      \"itemId\": \"123456\",\n      \"sku\": \"SKU123\",\n      \"unitPrice\": {\n        \"amount\": 10,\n        \"currency\": \"USD\"\n      },\n      \"quantity\": 2\n    },\n    {\n      \"itemId\": \"123456\",\n      \"sku\": \"SKU123\",\n      \"unitPrice\": {\n        \"amount\": 10,\n        \"currency\": \"USD\"\n      },\n      \"quantity\": 2\n    }\n  ],\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b515edd0-4ec8-4e66-8b8f-b7ba1a769687",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "order-transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"orderId\": \"123456\",\n  \"additionalOrderIds\": {\n    \"partner_order_id\": \"123456\",\n    \"shopify_order_id\": \"8196131534384\"\n  },\n  \"total\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"shipping\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"tax\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"discounts\": {\n    \"amount\": 10,\n    \"currency\": \"USD\"\n  },\n  \"couponCodes\": [\n    \"SAVE10\",\n    \"FREESHIP\"\n  ],\n  \"items\": [\n    {\n      \"itemId\": \"123456\",\n      \"sku\": \"SKU123\",\n      \"unitPrice\": {\n        \"amount\": 10,\n        \"currency\": \"USD\"\n      },\n      \"quantity\": 2\n    },\n    {\n      \"itemId\": \"123456\",\n      \"sku\": \"SKU123\",\n      \"unitPrice\": {\n        \"amount\": 10,\n        \"currency\": \"USD\"\n      },\n      \"quantity\": 2\n    }\n  ],\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce06223e-6a6c-4387-9ebc-440dd1963f96",
+          "name": "Page View",
+          "request": {
+            "name": "Page View",
+            "description": {
+              "content": "Records that a user has viewed a page; this should also include data of the viewed category, search, and/or items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "page-view"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"<string>\",\n      \"emailSha256\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phoneSha256\": \"<string>\",\n      \"partnerId\": \"<string>\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"<string>\",\n      \"userAgent\": \"<string>\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"location\": {\n      \"timezoneOffset\": \"<integer>\",\n      \"latitude\": \"<float>\",\n      \"longitude\": \"<float>\"\n    }\n  },\n  \"url\": \"<string>\",\n  \"pageType\": \"<string>\",\n  \"extra\": {\n    \"key_0\": \"<string>\"\n  },\n  \"agent\": \"<string>\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\",\n  \"item\": {\n    \"itemId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"category\": \"<string>\",\n    \"brand\": \"<string>\",\n    \"image\": \"<string>\",\n    \"available\": \"<boolean>\",\n    \"price\": {\n      \"amount\": \"<double>\",\n      \"currency\": \"<string>\"\n    },\n    \"attributes\": {\n      \"key_0\": \"<string>\"\n    },\n    \"sku\": \"<string>\"\n  },\n  \"category\": {\n    \"name\": \"<string>\",\n    \"itemIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"search\": {\n    \"query\": \"<string>\",\n    \"itemIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f889605-3326-4f84-b105-6d33d4d01ddb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "page-view"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"url\": \"https://example.com/page\",\n  \"pageType\": \"<string>\",\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\",\n  \"item\": {\n    \"itemId\": \"123456\",\n    \"name\": \"Wunderkind Monopoly Board Game\",\n    \"category\": \"Board Games\",\n    \"brand\": \"Wunderkind\",\n    \"image\": \"https://example.com/image.jpg\",\n    \"available\": true,\n    \"price\": {\n      \"amount\": 10,\n      \"currency\": \"USD\"\n    },\n    \"attributes\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"sku\": \"SKU123\"\n  },\n  \"category\": {\n    \"name\": \"Board Games\",\n    \"itemIds\": [\n      \"123456\",\n      \"789012\"\n    ]\n  },\n  \"search\": {\n    \"query\": \"cute cat pictures\",\n    \"itemIds\": [\n      \"123456\",\n      \"789012\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "597d9c3a-ba68-4845-b899-1efa444723f1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "page-view"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"url\": \"https://example.com/page\",\n  \"pageType\": \"<string>\",\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\",\n  \"item\": {\n    \"itemId\": \"123456\",\n    \"name\": \"Wunderkind Monopoly Board Game\",\n    \"category\": \"Board Games\",\n    \"brand\": \"Wunderkind\",\n    \"image\": \"https://example.com/image.jpg\",\n    \"available\": true,\n    \"price\": {\n      \"amount\": 10,\n      \"currency\": \"USD\"\n    },\n    \"attributes\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"sku\": \"SKU123\"\n  },\n  \"category\": {\n    \"name\": \"Board Games\",\n    \"itemIds\": [\n      \"123456\",\n      \"789012\"\n    ]\n  },\n  \"search\": {\n    \"query\": \"cute cat pictures\",\n    \"itemIds\": [\n      \"123456\",\n      \"789012\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bfeea1d-3243-4df7-a577-ef7562a5ac92",
+          "name": "Track Link Event",
+          "request": {
+            "name": "Track Link Event",
+            "description": {
+              "content": "This should be emitted each time a deep link opens into a mobile application only. Pass all deeplink URL in their final form including all URL parameters. If this is a shortened URL (e.g. URL) - please resolve/convert to the final URL before passing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "track-link"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"<string>\",\n        \"emailSha256\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"phoneSha256\": \"<string>\",\n        \"partnerId\": \"<string>\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\",\n          \"key_4\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"<string>\",\n        \"userAgent\": \"<string>\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"location\": {\n        \"timezoneOffset\": \"<integer>\",\n        \"latitude\": \"<float>\",\n        \"longitude\": \"<float>\"\n      }\n    },\n    \"agent\": \"<string>\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"url\": \"<string>\",\n  \"trackNonWunderkindLink\": \"<boolean>\",\n  \"emitClick\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c677af73-f6bc-45d2-9fbb-dfd953c0830e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "track-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"url\": \"https://example.com/tracked-link\",\n  \"trackNonWunderkindLink\": \"<boolean>\",\n  \"emitClick\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0e462c2-0a82-48ae-8028-e4876e0784c9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "track-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"common\": {\n    \"identification\": {\n      \"sessionIdentification\": {\n        \"wunderkindVisitorIdentifier\": {\n          \"deviceId\": \"<int64>\",\n          \"visitId\": \"<string>\"\n        },\n        \"partnerVisitorId\": \"<string>\",\n        \"smarterhqVisitorIdentifier\": {\n          \"loiid\": \"<string>\",\n          \"sessionId\": \"<string>\"\n        }\n      },\n      \"userIdentification\": {\n        \"email\": \"example@wunderkind.co\",\n        \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n        \"phone\": \"+18885551212\",\n        \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n        \"partnerId\": \"partner123\",\n        \"additionalIdentifiers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"source\": \"<string>\"\n      },\n      \"deviceIdentification\": {\n        \"ipAddress\": \"192.168.0.1\",\n        \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n      },\n      \"source\": \"<string>\",\n      \"profile\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"address\": \"123 Main St\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\"\n      },\n      \"location\": {\n        \"timezoneOffset\": -5,\n        \"latitude\": 40.7128,\n        \"longitude\": -74.006\n      }\n    },\n    \"agent\": \"partner:mparticle\",\n    \"timestamp\": \"<int64>\",\n    \"extra\": {\n      \"color\": \"red\",\n      \"size\": \"large\"\n    },\n    \"websiteId\": \"<int64>\"\n  },\n  \"url\": \"https://example.com/tracked-link\",\n  \"trackNonWunderkindLink\": \"<boolean>\",\n  \"emitClick\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa90cb1f-b657-404c-be7e-72ae3b3f7d5c",
+          "name": "User Identified",
+          "request": {
+            "name": "User Identified",
+            "description": {
+              "content": "Records that a user has been identified. Should include as much information on the user as possible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "user-identified"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"<string>\",\n      \"emailSha256\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phoneSha256\": \"<string>\",\n      \"partnerId\": \"<string>\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"<string>\",\n      \"userAgent\": \"<string>\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"location\": {\n      \"timezoneOffset\": \"<integer>\",\n      \"latitude\": \"<float>\",\n      \"longitude\": \"<float>\"\n    }\n  },\n  \"extra\": {\n    \"key_0\": \"<string>\"\n  },\n  \"agent\": \"<string>\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52138566-beb2-49a5-b901-5e5f0e1c7d85",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "user-identified"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f73114e9-b8a6-45e4-8f6e-10ab785df407",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "user-identified"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d2ad9a2-fe44-44b7-b8e8-4b20166535f6",
+          "name": "Visit/Session Started",
+          "request": {
+            "name": "Visit/Session Started",
+            "description": {
+              "content": "Records that a user visit/session",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "visit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"<string>\",\n      \"emailSha256\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phoneSha256\": \"<string>\",\n      \"partnerId\": \"<string>\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"<string>\",\n      \"userAgent\": \"<string>\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"location\": {\n      \"timezoneOffset\": \"<integer>\",\n      \"latitude\": \"<float>\",\n      \"longitude\": \"<float>\"\n    }\n  },\n  \"extra\": {\n    \"key_0\": \"<string>\"\n  },\n  \"agent\": \"<string>\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "088bc685-952f-464b-a674-870b3f68dfc1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "visit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8b31689-a2ba-4ac8-a59e-6b2c32f4bdc6",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "visit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identification\": {\n    \"sessionIdentification\": {\n      \"wunderkindVisitorIdentifier\": {\n        \"deviceId\": \"<int64>\",\n        \"visitId\": \"<string>\"\n      },\n      \"partnerVisitorId\": \"<string>\",\n      \"smarterhqVisitorIdentifier\": {\n        \"loiid\": \"<string>\",\n        \"sessionId\": \"<string>\"\n      }\n    },\n    \"userIdentification\": {\n      \"email\": \"example@wunderkind.co\",\n      \"emailSha256\": \"b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7\",\n      \"phone\": \"+18885551212\",\n      \"phoneSha256\": \"4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988\",\n      \"partnerId\": \"partner123\",\n      \"additionalIdentifiers\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"source\": \"<string>\"\n    },\n    \"deviceIdentification\": {\n      \"ipAddress\": \"192.168.0.1\",\n      \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n    },\n    \"source\": \"<string>\",\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"address\": \"123 Main St\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\"\n    },\n    \"location\": {\n      \"timezoneOffset\": -5,\n      \"latitude\": 40.7128,\n      \"longitude\": -74.006\n    }\n  },\n  \"extra\": {\n    \"color\": \"red\",\n    \"size\": \"large\"\n  },\n  \"agent\": \"partner:mparticle\",\n  \"timestamp\": \"<int64>\",\n  \"websiteId\": \"<int64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8005,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wunderkind.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e3d1634d-e5af-45ac-b4bd-f3c1a2fda449",
+    "name": "Wunderkind Email Send Event API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.\n\n## Features\n- Send emails to multiple recipients\n- HTML and plain text support\n- Custom sender information\n- Reply-to configuration\n- Bearer token authentication\n\n## Rate Limits\n- 1000 requests per minute per API key\n\n## Support\nFor technical support, please contact our API team.\n",
+      "type": "text/plain"
+    }
+  }
+}

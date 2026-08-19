@@ -1,0 +1,121 @@
+{
+  "item": [
+    {
+      "id": "918fb548-e301-4a1d-8560-72af5b084414",
+      "name": "Wunderhook",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fa62967a-01c0-4068-b85e-552052b43bdd",
+          "name": "New Endpoint",
+          "request": {
+            "name": "New Endpoint",
+            "description": {
+              "content": "This is your first endpoint! Edit this page to start documenting your API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"WkPurpose\": \"\",\n  \"WkChannel\": \"<string>\",\n  \"WkUserType\": \"<string>\",\n  \"Recipient\": \"<string>\",\n  \"RecipientSha256\": \"<string>\",\n  \"WkCartReplenishUrl\": \"<string>\",\n  \"WkCouponCode\": \"<string>\",\n  \"WkCouponPurpose\": \"<string>\",\n  \"WkItems\": [\n    {\n      \"WkId\": \"<string>\",\n      \"WkCopy\": \"<string>\",\n      \"WkImageUrl\": \"<string>\",\n      \"WkUrl\": \"<string>\",\n      \"WkPrice\": \"<string>\",\n      \"WkSalePrice\": \"<string>\",\n      \"WkQuantity\": \"<string>\",\n      \"WkAdditionalProperties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"WkId\": \"<string>\",\n      \"WkCopy\": \"<string>\",\n      \"WkImageUrl\": \"<string>\",\n      \"WkUrl\": \"<string>\",\n      \"WkPrice\": \"<string>\",\n      \"WkSalePrice\": \"<string>\",\n      \"WkQuantity\": \"<string>\",\n      \"WkAdditionalProperties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"WkAdditionalProperties\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4bcd7112-3088-4c56-a554-e9b1a298539e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Optionally include an authorization header to ensure only valid users are accessing your endpoint. Currently, `Bearer` and `Basic` are supported types of authorization.",
+                    "key": "Authorization",
+                    "value": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Recipient\": \"to@example.com\",\n  \"RecipientSha256\": \"01ebc948fa4c500ca1dc7b235ea2cadea0e534fe15d7035a1b31ae9d8a00029b\",\n  \"Origin\": \"wunderkind\",\n  \"UserType\": \"prospect\",\n  \"WkChannel\": \"email\",\n  \"WkPurpose\": \"cart abandonment\",\n  \"WKCouponCode\": \"\",\n  \"WKCouponPurpose\": \"\",\n  \"WkCartReplenishUrl\": \"some-url.com\",\n  \"WkItems\": [\n    {\n      \"WkCopy\": \"Product name\",\n      \"WkId\": \"012345\",\n      \"WkImageUrl\": \"some-url.jpg\",\n      \"WkUrl\": \"some-url.com\",\n      \"WkPrice\": \"34.77\",\n      \"WkSalePrice\": \"24.77\",\n      \"WkQuantity\": \"12\"\n    },\n    {\n      \"WkCopy\": \"Product name\",\n      \"WkId\": \"012345\",\n      \"WkImageUrl\": \"some-url.jpg\",\n      \"WkUrl\": \"some-url.com\",\n      \"WkAdditionalProperties\": [\n        {\n          \"key\": \"CategoryName\",\n          \"value\": \"Toys\"\n        }\n      ]\n    },\n    {\n      \"WkCopy\": \"Product name\",\n      \"WkId\": \"012345\",\n      \"WkImageUrl\": \"some-url.jpg\",\n      \"WkUrl\": \"some-url.com\"\n    },\n    {\n      \"WkCopy\": \"Product name\",\n      \"WkId\": \"012345\",\n      \"WkImageUrl\": \"some-url.jpg\",\n      \"WkUrl\": \"some-url.com\"\n    }\n  ],\n  \"WkAdditionalProperties\": [\n    {\n      \"key\": \"CategoryName\",\n      \"value\": \"Toys\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{yourendpoint}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "940e5ef0-1d59-46d6-ab5a-08ea5f1e22a1",
+    "name": "Wunderkind Email Wunderhook API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.\n\n## Features\n- Send emails to multiple recipients\n- HTML and plain text support\n- Custom sender information\n- Reply-to configuration\n- Bearer token authentication\n\n## Rate Limits\n- 1000 requests per minute per API key\n\n## Support\nFor technical support, please contact our API team.\n",
+      "type": "text/plain"
+    }
+  }
+}

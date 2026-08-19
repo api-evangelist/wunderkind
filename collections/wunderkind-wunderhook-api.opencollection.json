@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wunderkind Email Wunderhook API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wunderhook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "New Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{yourendpoint}/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This is your first endpoint! Edit this page to start documenting your API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

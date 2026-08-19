@@ -1,0 +1,74 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-13",
+    "method": "derived",
+    "source": "openapi/wunderkind-wunderhook-api-openapi.yml#get_new-endpoint",
+    "note": "INBOUND delivery, not an outbound call: this is the payload Wunderkind POSTs to a client-owned Signals webhook consumer endpoint. Body is the provider's own in-spec 'Sample Request' example, copied verbatim. The host is templated because the endpoint belongs to the client. See asyncapi/wunderkind-signals-webhooks.yml."
+  },
+  "operationId": "get_new-endpoint",
+  "direction": "inbound-delivery",
+  "request": {
+    "method": "POST",
+    "url": "https://{yourendpoint}/",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "Recipient": "to@example.com",
+      "RecipientSha256": "01ebc948fa4c500ca1dc7b235ea2cadea0e534fe15d7035a1b31ae9d8a00029b",
+      "Origin": "wunderkind",
+      "UserType": "prospect",
+      "WkChannel": "email",
+      "WkPurpose": "cart abandonment",
+      "WKCouponCode": "",
+      "WKCouponPurpose": "",
+      "WkCartReplenishUrl": "some-url.com",
+      "WkItems": [
+        {
+          "WkCopy": "Product name",
+          "WkId": "012345",
+          "WkImageUrl": "some-url.jpg",
+          "WkUrl": "some-url.com",
+          "WkPrice": "34.77",
+          "WkSalePrice": "24.77",
+          "WkQuantity": "12"
+        },
+        {
+          "WkCopy": "Product name",
+          "WkId": "012345",
+          "WkImageUrl": "some-url.jpg",
+          "WkUrl": "some-url.com",
+          "WkAdditionalProperties": [
+            {
+              "key": "CategoryName",
+              "value": "Toys"
+            }
+          ]
+        },
+        {
+          "WkCopy": "Product name",
+          "WkId": "012345",
+          "WkImageUrl": "some-url.jpg",
+          "WkUrl": "some-url.com"
+        },
+        {
+          "WkCopy": "Product name",
+          "WkId": "012345",
+          "WkImageUrl": "some-url.jpg",
+          "WkUrl": "some-url.com"
+        }
+      ],
+      "WkAdditionalProperties": [
+        {
+          "key": "CategoryName",
+          "value": "Toys"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "description": "Client consumer must return 200 OK to acknowledge the delivery.",
+    "body": null
+  }
+}

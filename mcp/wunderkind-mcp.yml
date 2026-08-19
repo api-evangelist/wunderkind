@@ -2,23 +2,23 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/ (harvested Wunderkind OpenAPI definitions)
-notes: >-
-  No official Wunderkind MCP server was found: the official MCP registry
-  returns zero results for "wunderkind" and npm has no first-party
-  Wunderkind MCP package. This is a candidate tool surface derived from the
-  operations in the harvested OpenAPI definitions - one tool per operationId.
+notes: 'No official Wunderkind MCP server was found: the official MCP registry returns zero results for
+  "wunderkind" and npm has no first-party Wunderkind MCP package. This is a candidate tool surface derived
+  from the operations in the harvested OpenAPI definitions - one tool per operationId.'
 server:
   name: wunderkind
   transport: http
 tools:
 - name: send_email
-  description: Send an email to one or more subscribed recipients through the Wunderkind email delivery platform
+  description: Send an email to one or more subscribed recipients through the Wunderkind email delivery
+    platform
   source_operation: openapi/wunderkind-email-openapi.yml#sendEmail
 - name: batch_id_lookup
   description: Resolve a list of WKND device IDs to best-matched hashed emails for a website ID
   source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identitylookupbatch
 - name: get_encryption_key
-  description: Obtain the client's encryption key to decipher encrypted email hashes from realtime ID lookup
+  description: Obtain the client's encryption key to decipher encrypted email hashes from realtime ID
+    lookup
   source_operation: openapi/wunderkind-identity-openapi.yml#post_id-resolutionv1identityenckey
 - name: subscribe_users
   description: Subscribe a list of email addresses for a website ID
@@ -59,3 +59,20 @@ tools:
 - name: track_app_push_token_set
   description: Record that a device set a new app push token
   source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_AppPushTokenSet
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived
+  tools: 16
+  checked: '2026-08-13'
+  source: catalog MCP census + re-search 2026-08-13
+  note: >-
+    Nobody ships a Wunderkind MCP server. No hosted/remote endpoint and no
+    stdio package exist: the official MCP registry returns zero results for
+    "wunderkind", npm has no first-party Wunderkind MCP package, and the
+    developer portal llms.txt (re-fetched 2026-08-13) lists no MCP surface.
+    endpoint/install are deliberately empty — the tools[] below are a CANDIDATE
+    surface derived one-per-operationId from the harvested OpenAPI, not a
+    reachable agent surface. No ToolCrosswalk artifact is emitted because there
+    is no published MCP tool list to bind against; a crosswalk here would be a
+    1:1 restatement of the derivation above.

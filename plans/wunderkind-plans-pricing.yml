@@ -1,0 +1,31 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.wunderkind.co/
+plan_count: 0
+published_pricing: false
+commercial_model: quote-only
+notes: >-
+  Wunderkind publishes NO plans, tiers, list prices, quotas or overage rates.
+  There is no pricing page: https://www.wunderkind.co/pricing and
+  https://www.wunderkind.co/pricing/ both return HTTP 404, and the homepage
+  navigation carries no pricing or plans link. The primary commercial calls to
+  action are "Get A Quote" and "Demo Request", and the site describes a
+  performance-based / guaranteed-revenue-lift commercial model priced per
+  brand rather than a published rate card. The developer portal
+  (developer.wunderkind.co) documents API access but no metered plan, no free
+  tier and no per-call price. Third-party software directories quote a
+  starting figure, but that is not provider-published and is deliberately not
+  recorded here.
+engagement_models:
+- name: Self-Service
+  note: Direct platform access; no published price.
+- name: Fully Managed Service
+  note: Agency-style managed partnership; no published price.
+- name: Hybrid Partnership
+  note: Co-managed; no published price.
+plans: []
+evidence:
+- {url: 'https://www.wunderkind.co/pricing', status: 404}
+- {url: 'https://www.wunderkind.co/pricing/', status: 404}
+- {url: 'https://www.wunderkind.co/', status: 200, detail: 'no pricing link in navigation; CTA is "Get A Quote" / "Demo Request"'}
+- {url: 'https://developer.wunderkind.co/', status: 200, detail: 'developer portal documents API access; no plan, quota or price published'}

@@ -1,0 +1,494 @@
+{
+  "item": [
+    {
+      "id": "966dfc72-69e9-49c3-a9e8-0eeedbbc0f81",
+      "name": "Ucrm",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97dbefcf-d515-428f-85bb-de21f4f77467",
+          "name": "unsubscribe a list of users. meant for clients to hit directly",
+          "request": {
+            "name": "unsubscribe a list of users. meant for clients to hit directly",
+            "description": {},
+            "url": {
+              "path": [
+                "ucrm",
+                "v1",
+                "unsubscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"website_id\": \"<string>\",\n  \"id_type\": \"email\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a770901d-b885-4b34-8dd3-08a1788015f4",
+              "name": "emails successfully unsubscribed with failed ids returned in body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "unsubscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72e010ee-2858-41e1-af73-d7ca8b09b62e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "unsubscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61eedbcc-f0b4-4839-b6dd-c8490454dd1d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "unsubscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd8bedb6-5dd7-49c8-83ab-80a9d6d73a54",
+              "name": "Internal Application Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "unsubscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3171aaf-e865-44f1-aec7-cc44b8e20815",
+          "name": "subscribe a list of users. meant for clients to hit directly",
+          "request": {
+            "name": "subscribe a list of users. meant for clients to hit directly",
+            "description": {},
+            "url": {
+              "path": [
+                "ucrm",
+                "v1",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"website_id\": \"<string>\",\n  \"id_type\": \"email\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37097908-aa7b-4343-a2f4-2a3efb4d63a6",
+              "name": "emails successfully subscribed with failed ids returned in body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eaf2795a-b9e5-4d23-aca6-77194f263353",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d758248-b1ac-4d90-8893-f87d8aa58d70",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc11896a-b87c-476d-a4a5-22a5ee67fae8",
+              "name": "Internal Application Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ucrm",
+                    "v1",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) This header is expected to be set according to the pattern below, where {apikey} is client's private key created on Wunderkind Platform. Select UCRM API product to create the API key. See https://developer.wunderkind.co/docs/authenticate-api-requests#/",
+                    "key": "Authorization",
+                    "value": "apikey {apikey}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"website_id\": \"1234\",\n  \"id_type\": \"email\",\n  \"ids\": [\n    \"test@example.com\",\n    \"fry@planetexpress.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wunderkind.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e7f2ba68-f4a9-4a98-b92c-8af06e686bad",
+    "name": "Wunderkind Email Ucrm API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.\n\n## Features\n- Send emails to multiple recipients\n- HTML and plain text support\n- Custom sender information\n- Reply-to configuration\n- Bearer token authentication\n\n## Rate Limits\n- 1000 requests per minute per API key\n\n## Support\nFor technical support, please contact our API team.\n",
+      "type": "text/plain"
+    }
+  }
+}

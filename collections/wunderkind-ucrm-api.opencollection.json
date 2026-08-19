@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wunderkind Email Ucrm API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ucrm",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "unsubscribe a list of users. meant for clients to hit directly",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wunderkind.co/ucrm/v1/unsubscribe",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "unsubscribe a list of users. meant for clients to hit directly"
+        },
+        {
+          "info": {
+            "name": "subscribe a list of users. meant for clients to hit directly",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.wunderkind.co/ucrm/v1/subscribe",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "subscribe a list of users. meant for clients to hit directly"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

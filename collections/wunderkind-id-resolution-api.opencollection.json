@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wunderkind Email Id Resolution API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Id Resolution",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "post_id-resolutionv1identitylookupbatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/id-resolution/v1/identity/lookup/batch",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "get_id-resolutionv1identityenckey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wunderkind.co/id-resolution/v1/identity/enckey"
+          }
+        },
+        {
+          "info": {
+            "name": "post_id-resolutionv1identityenckey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/id-resolution/v1/identity/enckey",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "get_id-resolutionv1identityenckey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wunderkind.co//id-resolution/v1/identity/enckey"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

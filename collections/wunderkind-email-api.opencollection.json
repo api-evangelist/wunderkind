@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wunderkind Email API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.wunderkind.co/email/send",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email to one or more recipients through the Wunderkind email delivery platform to a subscribers\nof the website id set by wunderkind.\n\nThis endpoint supports both HTML and plain text email content, custom sender information,\nand flexible recipient management. All emails are processed synchronously.\n\n**Important Notes:**\n- All recipient email addresses must be valid and properly formatted\n- The sender email address must be verified and susbcribed for the website id set by wunderkind\n- If t"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

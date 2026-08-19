@@ -1,0 +1,35 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-13",
+    "method": "derived",
+    "source": "openapi/wunderkind-email-api-openapi.yml#sendEmail",
+    "note": "Request and response bodies are the provider's own in-spec examples (full_featured_email / success_response), copied verbatim. Host, path, method and auth scheme come from servers[], paths and components.securitySchemes.BearerAuth in the same spec. No values invented."
+  },
+  "operationId": "sendEmail",
+  "request": {
+    "method": "POST",
+    "url": "https://api.wunderkind.co/email/send",
+    "headers": {
+      "Authorization": "Bearer <JWT>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "to_emails": [
+        "user1@example.com",
+        "user2@example.com"
+      ],
+      "subject": "Monthly Newsletter - March 2025",
+      "from": "newsletter@company.com",
+      "from_name": "Company Newsletter Team",
+      "reply_to": "support@company.com",
+      "body": "<html><body><h1>Monthly Update</h1><p>Here's what's new this month...</p></body></html>"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "status_code": "Success",
+      "message": "Emails sent successfully"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-13",
+    "method": "derived",
+    "source": "openapi/wunderkind-ucrm-api-openapi.yml#external_subscribe",
+    "note": "Request body is the provider's own in-spec schema example, copied verbatim. The Authorization header pattern 'apikey {apikey}' is the spec's own declared header default. The spec documents the 201 response by description only and publishes no response example, so no response body is asserted here."
+  },
+  "operationId": "external_subscribe",
+  "request": {
+    "method": "PUT",
+    "url": "https://api.wunderkind.co/ucrm/v1/subscribe",
+    "headers": {
+      "Authorization": "apikey {apikey}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "website_id": "1234",
+      "id_type": "email",
+      "ids": [
+        "test@example.com",
+        "fry@planetexpress.com"
+      ]
+    }
+  },
+  "response": {
+    "status": 201,
+    "description": "emails successfully subscribed with failed ids returned in body",
+    "body": null
+  }
+}

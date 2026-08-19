@@ -1,0 +1,31 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-13",
+    "method": "derived",
+    "source": "openapi/wunderkind-identity-api-openapi.yml#post_v1identitylookup",
+    "note": "Response body is the provider's own in-spec example ('OK'), copied verbatim including its literal \"string\" placeholders. The spec publishes NO request example, so the request body below is the spec's own required-field set from the 'Lookup by device id' oneOf branch with angle-bracket placeholders \u2014 field names are verbatim, values are placeholders and are not real credentials or identifiers."
+  },
+  "operationId": "post_v1identitylookup",
+  "request": {
+    "method": "POST",
+    "url": "https://api.wunderkind.co/v1/identity/lookup",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "device_id": "<wknd_device_id>",
+      "website_id": "<website_id>",
+      "external_id_type": "encrypted_email_hash"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "external_id": {
+        "id": "string",
+        "name": "encrypted_email_hash",
+        "encryption_key_name": "string"
+      }
+    }
+  }
+}
