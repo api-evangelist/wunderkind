@@ -224,6 +224,9 @@ apis:
   - type: APIReference
     url: https://developer.wunderkind.co/reference/service_visit
 common:
+- type: CapabilityMap
+  url: capabilities/wunderkind-capability-edges.yml
+  name: Wunderkind Business Capability Map
 - type: Overlay
   url: overlays/wunderkind-email-overlay.yaml
 - type: Overlay
