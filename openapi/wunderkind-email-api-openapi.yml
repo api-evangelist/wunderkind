@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Wunderkind Email API
   description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
@@ -24,9 +24,7 @@ info:
 
     ## Support
 
-    For technical support, please contact our API team.
-
-    '
+    For technical support, please contact our API team.'
   version: 1.0.0
 servers:
 - url: https://api.wunderkind.co
@@ -58,9 +56,7 @@ paths:
 
         - HTML content should be properly encoded and sanitized
 
-        - Large recipient lists may experience delayed processing
-
-        '
+        - Large recipient lists may experience delayed processing'
       operationId: sendEmail
       tags:
       - Email
@@ -144,6 +140,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          description: Error details object
+          properties:
+            message:
+              type: string
+              description: Error type or code
+              example: InvalidApiKey
+            detail:
+              type: string
+              description: Human-readable error message with additional context
+              example: Please provide valid API key in the apikey query parameter.
+          required:
+          - message
+          - detail
+      required:
+      - error
     EmailRequest:
       type: object
       required:
@@ -185,26 +201,6 @@ components:
           type: string
           description: Email body content (HTML or plain text)
           example: <html><body>Hello, World!</body></html>
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          description: Error details object
-          properties:
-            message:
-              type: string
-              description: Error type or code
-              example: InvalidApiKey
-            detail:
-              type: string
-              description: Human-readable error message with additional context
-              example: Please provide valid API key in the apikey query parameter.
-          required:
-          - message
-          - detail
-      required:
-      - error
     EmailResponse:
       type: object
       required:

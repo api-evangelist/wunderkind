@@ -1,24 +1,58 @@
 {
   "provider": "wunderkind",
   "sources": [
-    "wunderkind-email-api-openapi.yml",
-    "wunderkind-id-resolution-api-openapi.yml",
-    "wunderkind-identity-api-openapi.yml",
-    "wunderkind-send-event-api-openapi.yml",
-    "wunderkind-ucrm-api-openapi.yml",
-    "wunderkind-wunderhook-api-openapi.yml"
+    "_original/wunderkind-email-openapi.yml",
+    "_original/wunderkind-event-ingestion-openapi.yml",
+    "_original/wunderkind-identity-openapi.yml",
+    "_original/wunderkind-signals-wunderhook-openapi.yml",
+    "_original/wunderkind-ucrm-openapi.yml"
   ],
   "outputs": [
     "wunderkind-email-api-openapi.yml",
     "wunderkind-id-resolution-api-openapi.yml",
     "wunderkind-identity-api-openapi.yml",
     "wunderkind-send-event-api-openapi.yml",
-    "wunderkind-ucrm-api-openapi.yml",
-    "wunderkind-wunderhook-api-openapi.yml"
+    "wunderkind-wunderhook-api-openapi.yml",
+    "wunderkind-ucrm-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wunderkind-email-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "wunderkind-event-ingestion-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "wunderkind-event-ingestion-openapi.yml: tagged paths POST /id-resolution/v1/identity/lookup/batch -> Id Resolution",
+    "wunderkind-event-ingestion-openapi.yml: tagged paths POST //v1/identity/lookup -> Identity",
+    "wunderkind-event-ingestion-openapi.yml: tagged paths POST /id-resolution/v1/identity/enckey -> Id Resolution",
+    "wunderkind-event-ingestion-openapi.yml: tagged paths GET /id-resolution/v1/identity/enckey -> Id Resolution",
+    "wunderkind-event-ingestion-openapi.yml: tagged paths GET //id-resolution/v1/identity/enckey -> Id Resolution",
+    "wunderkind-event-ingestion-openapi.yml: declared missing tag: Id Resolution",
+    "wunderkind-event-ingestion-openapi.yml: declared missing tag: Identity",
+    "wunderkind-event-ingestion-openapi.yml: declared missing tag: Send Event",
+    "wunderkind-identity-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "wunderkind-identity-openapi.yml: tagged paths POST /id-resolution/v1/identity/lookup/batch -> Id Resolution",
+    "wunderkind-identity-openapi.yml: tagged paths POST /v1/identity/lookup -> Identity",
+    "wunderkind-identity-openapi.yml: tagged paths POST /id-resolution/v1/identity/enckey -> Id Resolution",
+    "wunderkind-identity-openapi.yml: declared missing tag: Id Resolution",
+    "wunderkind-identity-openapi.yml: declared missing tag: Identity",
+    "wunderkind-signals-wunderhook-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "wunderkind-signals-wunderhook-openapi.yml: tagged paths POST / -> Wunderhook",
+    "wunderkind-signals-wunderhook-openapi.yml: declared missing tag: Wunderhook",
+    "wunderkind-ucrm-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "wunderkind-ucrm-openapi.yml: tagged paths PUT /ucrm/v1/unsubscribe -> Ucrm",
+    "wunderkind-ucrm-openapi.yml: tagged paths PUT /ucrm/v1/subscribe -> Ucrm",
+    "wunderkind-ucrm-openapi.yml: declared missing tag: Ucrm",
+    "tag 'Id Resolution' spans 2 source specs (wunderkind-event-ingestion-openapi.yml, wunderkind-identity-openapi.yml): per-path servers applied",
+    "tag 'Identity' spans 2 source specs (wunderkind-event-ingestion-openapi.yml, wunderkind-identity-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "wunderkind-email-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wunderkind-id-resolution-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wunderkind-identity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wunderkind-send-event-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wunderkind-ucrm-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wunderkind-wunderhook-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

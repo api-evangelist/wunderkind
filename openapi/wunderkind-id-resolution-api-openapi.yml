@@ -1,36 +1,12 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Wunderkind Email Id Resolution API
-  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
-
-
-    ## Features
-
-    - Send emails to multiple recipients
-
-    - HTML and plain text support
-
-    - Custom sender information
-
-    - Reply-to configuration
-
-    - Bearer token authentication
-
-
-    ## Rate Limits
-
-    - 1000 requests per minute per API key
-
-
-    ## Support
-
-    For technical support, please contact our API team.
-
-    '
-  version: 1.0.0
+  title: Wunderkind Id Resolution API
+  version: '1.0'
+  description: 'Operations tagged Id Resolution across 2 of this provider''s published API definitions: wunderkind-event-ingestion-openapi.yml, wunderkind-identity-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
+- url: //api.wunderkind.co
 - url: https://api.wunderkind.co
-  description: Production server
+  description: Identity API
 tags:
 - name: Id Resolution
 paths:
@@ -142,6 +118,10 @@ paths:
               - device_ids
       tags:
       - Id Resolution
+      summary: Post id resolutionv1identitylookupbatch
+      x-summary-source: derived
+    servers:
+    - url: //api.wunderkind.co
   /id-resolution/v1/identity/enckey:
     post:
       description: ''
@@ -214,6 +194,8 @@ paths:
         - shell
       tags:
       - Id Resolution
+      summary: Post id resolutionv1identityenckey
+      x-summary-source: derived
     get:
       description: ''
       operationId: get_id-resolutionv1identityenckey
@@ -223,6 +205,10 @@ paths:
       parameters: []
       tags:
       - Id Resolution
+      summary: Get id resolutionv1identityenckey
+      x-summary-source: derived
+    servers:
+    - url: //api.wunderkind.co
   //id-resolution/v1/identity/enckey:
     get:
       description: ''
@@ -233,10 +219,10 @@ paths:
       parameters: []
       tags:
       - Id Resolution
-components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Bearer token authentication
+      summary: Get id resolutionv1identityenckey
+      x-summary-source: derived
+    servers:
+    - url: //api.wunderkind.co
+x-refined-from:
+- wunderkind-event-ingestion-openapi.yml
+- wunderkind-identity-openapi.yml

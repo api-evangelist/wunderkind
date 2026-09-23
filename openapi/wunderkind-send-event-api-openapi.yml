@@ -1,36 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Wunderkind Email Send Event API
-  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
-
-
-    ## Features
-
-    - Send emails to multiple recipients
-
-    - HTML and plain text support
-
-    - Custom sender information
-
-    - Reply-to configuration
-
-    - Bearer token authentication
-
-
-    ## Rate Limits
-
-    - 1000 requests per minute per API key
-
-
-    ## Support
-
-    For technical support, please contact our API team.
-
-    '
-  version: 1.0.0
+  title: Event Ingestion Send Event API
+  version: '2025-01-12'
 servers:
-- url: https://api.wunderkind.co
-  description: Production server
+- url: //api.wunderkind.co
 tags:
 - name: Send Event
 paths:
@@ -322,189 +295,34 @@ paths:
       - Send Event
 components:
   schemas:
-    eventsMoney:
+    eventsIdentification:
       type: object
       properties:
-        amount:
-          type: number
-          format: double
-          example: 10
-          description: The amount of money
-        currency:
-          type: string
-          example: USD
-          description: The currency code
+        sessionIdentification:
+          $ref: '#/components/schemas/eventsSessionIdentification'
+        userIdentification:
+          $ref: '#/components/schemas/eventsUserIdentification'
+        deviceIdentification:
+          $ref: '#/components/schemas/eventsDeviceIdentification'
+        source:
+          $ref: '#/components/schemas/eventsSource'
+        profile:
+          $ref: '#/components/schemas/eventsProfile'
+        location:
+          $ref: '#/components/schemas/eventsLocation'
+      title: Metadata used for identification of the user
       required:
-      - amount
-      - currency
-    eventsSmarterHQVisitorIdentifier:
+      - sessionIdentification
+      - userIdentification
+      - deviceIdentification
+      - source
+    eventsSearchPageDetails:
       type: object
       properties:
-        loiid:
+        query:
           type: string
-          example: 1234567890
-          description: SmarterHQ loiid
-        sessionId:
-          type: string
-          example: 1234567890
-          description: SmarterHQ session id
-      required:
-      - loiid
-      - sessionId
-    eventsProfile:
-      type: object
-      properties:
-        firstName:
-          type: string
-          example: John
-          description: The first name of the user
-        lastName:
-          type: string
-          example: Doe
-          description: The last name of the user
-        address:
-          type: string
-          example: 123 Main St
-          description: The address of the user
-        city:
-          type: string
-          example: New York
-          description: The city of the user
-        state:
-          type: string
-          example: NY
-          description: The state of the user
-        zip:
-          type: string
-          example: '10001'
-          description: The zip code of the user
-        country:
-          type: string
-          example: US
-          description: The country of the user
-    eventsDeviceIdentification:
-      type: object
-      properties:
-        ipAddress:
-          type: string
-          example: 192.168.0.1
-          description: The IP address of the user (IPv4 or IPv6)
-        userAgent:
-          type: string
-          example: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3
-          description: The user agent of the browser
-      description: Metadata representing the device used by the user.
-      required:
-      - ipAddress
-    eventsVisitEvent:
-      type: object
-      properties:
-        identification:
-          $ref: '#/components/schemas/eventsIdentification'
-        extra:
-          type: object
-          example:
-            color: red
-            size: large
-          additionalProperties:
-            type: string
-          description: Any additional attributes, may be passed empty.
-        agent:
-          type: string
-          example: partner:mparticle
-          description: The agent from which the event was sent
-        timestamp:
-          type: string
-          format: int64
-          example: 1611312000
-          description: The timestamp of the event in milliseconds since the unix epoch
-        websiteId:
-          type: string
-          format: int64
-          example: 123456
-          description: The unique identifier for the website as provided by Wunderkind
-      required:
-      - identification
-      - extra
-      - agent
-      - timestamp
-      - websiteId
-    eventsOrderLineItem:
-      type: object
-      properties:
-        itemId:
-          type: string
-          example: '123456'
-          description: The unique identifier for the item as defined by the partner. This represents the parent identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination
-        sku:
-          type: string
-          example: SKU123
-          description: The SKU of the item as defined by the partner. This represents the child identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination
-        unitPrice:
-          $ref: '#/components/schemas/eventsMoney'
-        quantity:
-          type: integer
-          format: int32
-          example: 2
-          description: The quantity of the item in the order
-      title: Details about an item in an order
-      required:
-      - itemId
-      - sku
-      - unitPrice
-      - quantity
-    eventsWunderkindVisitorIdentifier:
-      type: object
-      properties:
-        deviceId:
-          type: string
-          format: int64
-          example: 1101175423001375000
-          description: Wunderkind device identifier as returned onsite with `bouncex.cookie.did`
-        visitId:
-          type: string
-          example: 1736778888384240
-          description: Wunderkind visit identifier as returned onsite with `bouncex.cookie.vid`
-      title: Metadata representing the user session for partners using the Wunderkind tag
-      required:
-      - deviceId
-      - visitId
-    eventsSessionIdentification:
-      type: object
-      description: 'Metadata representing a users session. Allows Wunderkind to connect multiple events into a single session. NOTE: Exactly one of wunderkindVisitorIdentifier or partnerVisitorId must be provided.'
-      properties:
-        wunderkindVisitorIdentifier:
-          $ref: '#/components/schemas/eventsWunderkindVisitorIdentifier'
-        partnerVisitorId:
-          type: string
-          description: Generate and store a random 16 character alphanumeric identifier for the visitor if not already present. This identifier should be consistent for repeat visitors.
-        smarterhqVisitorIdentifier:
-          $ref: '#/components/schemas/eventsSmarterHQVisitorIdentifier'
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    eventsCategoryPageDetails:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Board Games
-          description: The category of the item as defined by the partner
+          example: cute cat pictures
+          description: The search query as entered by the user
         itemIds:
           type: array
           example:
@@ -512,190 +330,11 @@ components:
           - '789012'
           items:
             type: string
-          description: The unique identifiers of the items as defined by the partner in the category on this specific pageview
-      title: Details about the category and items on this pageview (required for category pages)
+          description: The unique identifiers of the items as defined by the partner in the search results
+      title: Details about the search query and results for this pageview (required for the search results page)
       required:
-      - name
+      - query
       - itemIds
-    eventsCustomEvent:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/eventsCommon'
-        title:
-          type: string
-          example: samsevent
-          description: Name/title of the custom event
-      required:
-      - common
-      - title
-    eventsAppPushActionEvent:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/eventsCommon'
-        wunderkindPayload:
-          type: object
-          description: Key-value pairs supporting string keys with any value type
-        appPushActionType:
-          $ref: '#/components/schemas/eventsAppPushActionType'
-      required:
-      - common
-      - wunderkindPayload
-      - appPushActionType
-    eventsAppPushToggleEvent:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/eventsCommon'
-        toggle:
-          type: boolean
-      required:
-      - common
-      - toggle
-    eventsSource:
-      type: string
-      enum:
-      - web
-      - app
-      - retail
-      title: The source of the event
-    eventsPageType:
-      type: string
-      enum:
-      - home
-      - category
-      - product
-      - search
-      - cart
-      - checkout
-      - appdeeplink
-    eventsPageViewEvent:
-      type: object
-      properties:
-        identification:
-          $ref: '#/components/schemas/eventsIdentification'
-        url:
-          type: string
-          example: https://example.com/page
-          description: URL of the page
-        item:
-          $ref: '#/components/schemas/eventsItemPageDetails'
-        category:
-          $ref: '#/components/schemas/eventsCategoryPageDetails'
-        search:
-          $ref: '#/components/schemas/eventsSearchPageDetails'
-        pageType:
-          $ref: '#/components/schemas/eventsPageType'
-        extra:
-          type: object
-          example:
-            color: red
-            size: large
-          additionalProperties:
-            type: string
-          description: Any additional attributes, may be passed empty.
-        agent:
-          type: string
-          example: partner:mparticle
-          description: The agent from which the event was sent
-        timestamp:
-          type: string
-          format: int64
-          example: 1611312000
-          description: The timestamp of the event in milliseconds since the unix epoch
-        websiteId:
-          type: string
-          format: int64
-          example: 123456
-          description: The unique identifier for the website as provided by Wunderkind
-      required:
-      - identification
-      - url
-      - pageType
-      - extra
-      - agent
-      - timestamp
-      - websiteId
-    eventsAddToCartEvent:
-      type: object
-      properties:
-        identification:
-          $ref: '#/components/schemas/eventsIdentification'
-        itemId:
-          type: string
-          example: '123456'
-          description: The unique identifier for the item as defined by the partner. This represents the parent identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination
-        sku:
-          type: string
-          example: SKU123
-          description: The SKU of the item as defined by the partner. This represents the child identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination. This is optional, but should be included if available.
-        cartToken:
-          type: string
-          example: '123456'
-          description: The unique identifier for the cart as defined by the partner. Contains the value of the cart cookie on the platform. Only needed for cookie based cart replenishment
-        extra:
-          type: object
-          example:
-            color: red
-            size: large
-          additionalProperties:
-            type: string
-          description: Any additional attributes, may be passed empty.
-        agent:
-          type: string
-          example: partner:mparticle
-          description: The agent from which the event was sent
-        timestamp:
-          type: string
-          format: int64
-          example: 1611312000
-          description: The timestamp of the event in milliseconds since the unix epoch
-        websiteId:
-          type: string
-          format: int64
-          example: 123456
-          description: The unique identifier for the website as provided by Wunderkind
-      required:
-      - identification
-      - itemId
-      - cartToken
-      - extra
-      - agent
-      - timestamp
-      - websiteId
-    eventsUserIdentification:
-      type: object
-      properties:
-        email:
-          type: string
-          example: example@wunderkind.co
-          description: Email address. This is preferred over the SHA256 hashed email.
-        emailSha256:
-          type: string
-          example: b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7
-          description: Email address (SHA256 hashed). Ensure to lowercase the email before hashing.
-        phone:
-          type: string
-          example: '+18885551212'
-          description: Phone Number - please pass in the format +(country code)(phone number). This is preferred over the SHA256 hashed phone number.
-        phoneSha256:
-          type: string
-          example: 4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988
-          description: Phone Number (SHA256 hashed)
-        partnerId:
-          type: string
-          example: partner123
-          description: Partner identifier - An identifier for the partner that owns the user
-        additionalIdentifiers:
-          type: object
-          additionalProperties:
-            type: string
-          description: Additional identifiers
-        source:
-          type: string
-          description: Source of the user
-      description: Metadata representing the user behind the session.
     eventsOrderTransactionEvent:
       type: object
       properties:
@@ -770,6 +409,273 @@ components:
       - agent
       - timestamp
       - websiteId
+    eventsUserIdentification:
+      type: object
+      properties:
+        email:
+          type: string
+          example: example@wunderkind.co
+          description: Email address. This is preferred over the SHA256 hashed email.
+        emailSha256:
+          type: string
+          example: b207c7ffcd083b51d3554a4190a083a0bc3df51d04c46906b517585f772c68f7
+          description: Email address (SHA256 hashed). Ensure to lowercase the email before hashing.
+        phone:
+          type: string
+          example: '+18885551212'
+          description: Phone Number - please pass in the format +(country code)(phone number). This is preferred over the SHA256 hashed phone number.
+        phoneSha256:
+          type: string
+          example: 4b678bd4c8a72e7f740ce58900a1a07f7b13fab8627b0aabb31e39abbe429988
+          description: Phone Number (SHA256 hashed)
+        partnerId:
+          type: string
+          example: partner123
+          description: Partner identifier - An identifier for the partner that owns the user
+        additionalIdentifiers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional identifiers
+        source:
+          type: string
+          description: Source of the user
+      description: Metadata representing the user behind the session.
+    eventsAppPushTokenSetEvent:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/eventsCommon'
+        token:
+          type: string
+      required:
+      - common
+      - token
+    eventsSessionIdentification:
+      type: object
+      description: 'Metadata representing a users session. Allows Wunderkind to connect multiple events into a single session. NOTE: Exactly one of wunderkindVisitorIdentifier or partnerVisitorId must be provided.'
+      properties:
+        wunderkindVisitorIdentifier:
+          $ref: '#/components/schemas/eventsWunderkindVisitorIdentifier'
+        partnerVisitorId:
+          type: string
+          description: Generate and store a random 16 character alphanumeric identifier for the visitor if not already present. This identifier should be consistent for repeat visitors.
+        smarterhqVisitorIdentifier:
+          $ref: '#/components/schemas/eventsSmarterHQVisitorIdentifier'
+    eventsCustomEvent:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/eventsCommon'
+        title:
+          type: string
+          example: samsevent
+          description: Name/title of the custom event
+      required:
+      - common
+      - title
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    eventsAppPushActionType:
+      type: string
+      enum:
+      - opened
+      - delivered
+    eventsEmptyCartEvent:
+      type: object
+      properties:
+        identification:
+          $ref: '#/components/schemas/eventsIdentification'
+        extra:
+          type: object
+          example:
+            color: red
+            size: large
+          additionalProperties:
+            type: string
+          description: Any additional attributes, may be passed empty.
+        agent:
+          type: string
+          example: partner:mparticle
+          description: The agent from which the event was sent
+        timestamp:
+          type: string
+          format: int64
+          example: 1611312000
+          description: The timestamp of the event in milliseconds since the unix epoch
+        websiteId:
+          type: string
+          format: int64
+          example: 123456
+          description: The unique identifier for the website as provided by Wunderkind
+      required:
+      - identification
+      - extra
+      - agent
+      - timestamp
+      - websiteId
+    eventsDeviceIdentification:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          example: 192.168.0.1
+          description: The IP address of the user (IPv4 or IPv6)
+        userAgent:
+          type: string
+          example: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3
+          description: The user agent of the browser
+      description: Metadata representing the device used by the user.
+      required:
+      - ipAddress
+    eventsMoney:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          example: 10
+          description: The amount of money
+        currency:
+          type: string
+          example: USD
+          description: The currency code
+      required:
+      - amount
+      - currency
+    eventsCommon:
+      type: object
+      properties:
+        identification:
+          $ref: '#/components/schemas/eventsIdentification'
+        agent:
+          type: string
+          example: partner:mparticle
+          description: The agent from which the event was sent
+        timestamp:
+          type: string
+          format: int64
+          example: 1611312000
+          description: The timestamp of the event in milliseconds since the unix epoch
+        extra:
+          type: object
+          example:
+            color: red
+            size: large
+          additionalProperties:
+            type: string
+          description: Any additional attributes, may be passed empty.
+        websiteId:
+          type: string
+          format: int64
+          example: 123456
+          description: The unique identifier for the website as provided by Wunderkind
+      required:
+      - identification
+      - agent
+      - timestamp
+      - extra
+    eventsPageViewEvent:
+      type: object
+      properties:
+        identification:
+          $ref: '#/components/schemas/eventsIdentification'
+        url:
+          type: string
+          example: https://example.com/page
+          description: URL of the page
+        item:
+          $ref: '#/components/schemas/eventsItemPageDetails'
+        category:
+          $ref: '#/components/schemas/eventsCategoryPageDetails'
+        search:
+          $ref: '#/components/schemas/eventsSearchPageDetails'
+        pageType:
+          $ref: '#/components/schemas/eventsPageType'
+        extra:
+          type: object
+          example:
+            color: red
+            size: large
+          additionalProperties:
+            type: string
+          description: Any additional attributes, may be passed empty.
+        agent:
+          type: string
+          example: partner:mparticle
+          description: The agent from which the event was sent
+        timestamp:
+          type: string
+          format: int64
+          example: 1611312000
+          description: The timestamp of the event in milliseconds since the unix epoch
+        websiteId:
+          type: string
+          format: int64
+          example: 123456
+          description: The unique identifier for the website as provided by Wunderkind
+      required:
+      - identification
+      - url
+      - pageType
+      - extra
+      - agent
+      - timestamp
+      - websiteId
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    eventsOrderLineItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+          example: '123456'
+          description: The unique identifier for the item as defined by the partner. This represents the parent identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination
+        sku:
+          type: string
+          example: SKU123
+          description: The SKU of the item as defined by the partner. This represents the child identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination
+        unitPrice:
+          $ref: '#/components/schemas/eventsMoney'
+        quantity:
+          type: integer
+          format: int32
+          example: 2
+          description: The quantity of the item in the order
+      title: Details about an item in an order
+      required:
+      - itemId
+      - sku
+      - unitPrice
+      - quantity
+    eventsAppPushActionEvent:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/eventsCommon'
+        wunderkindPayload:
+          type: object
+          description: Key-value pairs supporting string keys with any value type
+        appPushActionType:
+          $ref: '#/components/schemas/eventsAppPushActionType'
+      required:
+      - common
+      - wunderkindPayload
+      - appPushActionType
     eventsItemPageDetails:
       type: object
       properties:
@@ -821,11 +727,45 @@ components:
       - available
       - price
       - attributes
-    eventsCommon:
+    eventsSmarterHQVisitorIdentifier:
+      type: object
+      properties:
+        loiid:
+          type: string
+          example: 1234567890
+          description: SmarterHQ loiid
+        sessionId:
+          type: string
+          example: 1234567890
+          description: SmarterHQ session id
+      required:
+      - loiid
+      - sessionId
+    eventsAddToCartEvent:
       type: object
       properties:
         identification:
           $ref: '#/components/schemas/eventsIdentification'
+        itemId:
+          type: string
+          example: '123456'
+          description: The unique identifier for the item as defined by the partner. This represents the parent identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination
+        sku:
+          type: string
+          example: SKU123
+          description: The SKU of the item as defined by the partner. This represents the child identifier for the item. For example, if you sell similar shirts, they may have the same parent id, but a different sku for each size / color combination. This is optional, but should be included if available.
+        cartToken:
+          type: string
+          example: '123456'
+          description: The unique identifier for the cart as defined by the partner. Contains the value of the cart cookie on the platform. Only needed for cookie based cart replenishment
+        extra:
+          type: object
+          example:
+            color: red
+            size: large
+          additionalProperties:
+            type: string
+          description: Any additional attributes, may be passed empty.
         agent:
           type: string
           example: partner:mparticle
@@ -835,6 +775,132 @@ components:
           format: int64
           example: 1611312000
           description: The timestamp of the event in milliseconds since the unix epoch
+        websiteId:
+          type: string
+          format: int64
+          example: 123456
+          description: The unique identifier for the website as provided by Wunderkind
+      required:
+      - identification
+      - itemId
+      - cartToken
+      - extra
+      - agent
+      - timestamp
+      - websiteId
+    eventsSource:
+      type: string
+      enum:
+      - web
+      - app
+      - retail
+      title: The source of the event
+    eventsWunderkindVisitorIdentifier:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          format: int64
+          example: 1101175423001375000
+          description: Wunderkind device identifier as returned onsite with `bouncex.cookie.did`
+        visitId:
+          type: string
+          example: 1736778888384240
+          description: Wunderkind visit identifier as returned onsite with `bouncex.cookie.vid`
+      title: Metadata representing the user session for partners using the Wunderkind tag
+      required:
+      - deviceId
+      - visitId
+    eventsSubmitEventResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Success
+        message:
+          type: string
+          description: Message
+    eventsTrackLinkEvent:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/eventsCommon'
+        url:
+          type: string
+          example: https://example.com/tracked-link
+          description: Pass all deeplink URL in their final form including all URL parameters. If this is a shortened URL (e.g. URL) - please resolve/convert to the final URL before passing.
+        emitClick:
+          type: boolean
+        trackNonWunderkindLink:
+          type: boolean
+      required:
+      - common
+      - url
+      - trackNonWunderkindLink
+    eventsLocation:
+      type: object
+      properties:
+        timezoneOffset:
+          type: integer
+          format: int32
+          example: -5
+          description: The UTC timezone offset of the user
+        latitude:
+          type: number
+          format: float
+          example: 40.7128
+          description: The latitude of the user
+        longitude:
+          type: number
+          format: float
+          example: -74.006
+          description: The longitude of the user
+    eventsProfile:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: John
+          description: The first name of the user
+        lastName:
+          type: string
+          example: Doe
+          description: The last name of the user
+        address:
+          type: string
+          example: 123 Main St
+          description: The address of the user
+        city:
+          type: string
+          example: New York
+          description: The city of the user
+        state:
+          type: string
+          example: NY
+          description: The state of the user
+        zip:
+          type: string
+          example: '10001'
+          description: The zip code of the user
+        country:
+          type: string
+          example: US
+          description: The country of the user
+    eventsAppPushToggleEvent:
+      type: object
+      properties:
+        common:
+          $ref: '#/components/schemas/eventsCommon'
+        toggle:
+          type: boolean
+      required:
+      - common
+      - toggle
+    eventsVisitEvent:
+      type: object
+      properties:
+        identification:
+          $ref: '#/components/schemas/eventsIdentification'
         extra:
           type: object
           example:
@@ -843,6 +909,15 @@ components:
           additionalProperties:
             type: string
           description: Any additional attributes, may be passed empty.
+        agent:
+          type: string
+          example: partner:mparticle
+          description: The agent from which the event was sent
+        timestamp:
+          type: string
+          format: int64
+          example: 1611312000
+          description: The timestamp of the event in milliseconds since the unix epoch
         websiteId:
           type: string
           format: int64
@@ -850,9 +925,29 @@ components:
           description: The unique identifier for the website as provided by Wunderkind
       required:
       - identification
+      - extra
       - agent
       - timestamp
-      - extra
+      - websiteId
+    eventsCategoryPageDetails:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Board Games
+          description: The category of the item as defined by the partner
+        itemIds:
+          type: array
+          example:
+          - '123456'
+          - '789012'
+          items:
+            type: string
+          description: The unique identifiers of the items as defined by the partner in the category on this specific pageview
+      title: Details about the category and items on this pageview (required for category pages)
+      required:
+      - name
+      - itemIds
     eventsUserIdentifiedEvent:
       type: object
       properties:
@@ -886,141 +981,13 @@ components:
       - agent
       - timestamp
       - websiteId
-    eventsAppPushTokenSetEvent:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/eventsCommon'
-        token:
-          type: string
-      required:
-      - common
-      - token
-    eventsEmptyCartEvent:
-      type: object
-      properties:
-        identification:
-          $ref: '#/components/schemas/eventsIdentification'
-        extra:
-          type: object
-          example:
-            color: red
-            size: large
-          additionalProperties:
-            type: string
-          description: Any additional attributes, may be passed empty.
-        agent:
-          type: string
-          example: partner:mparticle
-          description: The agent from which the event was sent
-        timestamp:
-          type: string
-          format: int64
-          example: 1611312000
-          description: The timestamp of the event in milliseconds since the unix epoch
-        websiteId:
-          type: string
-          format: int64
-          example: 123456
-          description: The unique identifier for the website as provided by Wunderkind
-      required:
-      - identification
-      - extra
-      - agent
-      - timestamp
-      - websiteId
-    eventsSubmitEventResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Success
-        message:
-          type: string
-          description: Message
-    eventsLocation:
-      type: object
-      properties:
-        timezoneOffset:
-          type: integer
-          format: int32
-          example: -5
-          description: The UTC timezone offset of the user
-        latitude:
-          type: number
-          format: float
-          example: 40.7128
-          description: The latitude of the user
-        longitude:
-          type: number
-          format: float
-          example: -74.006
-          description: The longitude of the user
-    eventsAppPushActionType:
+    eventsPageType:
       type: string
       enum:
-      - opened
-      - delivered
-    eventsIdentification:
-      type: object
-      properties:
-        sessionIdentification:
-          $ref: '#/components/schemas/eventsSessionIdentification'
-        userIdentification:
-          $ref: '#/components/schemas/eventsUserIdentification'
-        deviceIdentification:
-          $ref: '#/components/schemas/eventsDeviceIdentification'
-        source:
-          $ref: '#/components/schemas/eventsSource'
-        profile:
-          $ref: '#/components/schemas/eventsProfile'
-        location:
-          $ref: '#/components/schemas/eventsLocation'
-      title: Metadata used for identification of the user
-      required:
-      - sessionIdentification
-      - userIdentification
-      - deviceIdentification
-      - source
-    eventsSearchPageDetails:
-      type: object
-      properties:
-        query:
-          type: string
-          example: cute cat pictures
-          description: The search query as entered by the user
-        itemIds:
-          type: array
-          example:
-          - '123456'
-          - '789012'
-          items:
-            type: string
-          description: The unique identifiers of the items as defined by the partner in the search results
-      title: Details about the search query and results for this pageview (required for the search results page)
-      required:
-      - query
-      - itemIds
-    eventsTrackLinkEvent:
-      type: object
-      properties:
-        common:
-          $ref: '#/components/schemas/eventsCommon'
-        url:
-          type: string
-          example: https://example.com/tracked-link
-          description: Pass all deeplink URL in their final form including all URL parameters. If this is a shortened URL (e.g. URL) - please resolve/convert to the final URL before passing.
-        emitClick:
-          type: boolean
-        trackNonWunderkindLink:
-          type: boolean
-      required:
-      - common
-      - url
-      - trackNonWunderkindLink
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Bearer token authentication
+      - home
+      - category
+      - product
+      - search
+      - cart
+      - checkout
+      - appdeeplink

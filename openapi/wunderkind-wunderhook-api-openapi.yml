@@ -1,41 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Wunderkind Email Wunderhook API
-  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
-
-
-    ## Features
-
-    - Send emails to multiple recipients
-
-    - HTML and plain text support
-
-    - Custom sender information
-
-    - Reply-to configuration
-
-    - Bearer token authentication
-
-
-    ## Rate Limits
-
-    - 1000 requests per minute per API key
-
-
-    ## Support
-
-    For technical support, please contact our API team.
-
-    '
   version: 1.0.0
+  title: Wunderhook API
 servers:
 - url: https://{yourendpoint}
-  description: >-
-    Client-owned Signals webhook consumer endpoint, verbatim from the
-    provider-published Wunderhook definition
-    (openapi/_original/wunderkind-signals-wunderhook-openapi.yml). Wunderkind is
-    the SENDER of these requests; the host is the client's, not Wunderkind's, so
-    this must not be rewritten to api.wunderkind.co.
 tags:
 - name: Wunderhook
 paths:
@@ -187,10 +155,3 @@ paths:
           default: ''
       tags:
       - Wunderhook
-components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Bearer token authentication

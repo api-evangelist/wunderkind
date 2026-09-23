@@ -1,36 +1,12 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Wunderkind Email Identity API
-  description: 'The Wunderkind Email API provides a secure and reliable way to send emails to subsribers email address.
-
-
-    ## Features
-
-    - Send emails to multiple recipients
-
-    - HTML and plain text support
-
-    - Custom sender information
-
-    - Reply-to configuration
-
-    - Bearer token authentication
-
-
-    ## Rate Limits
-
-    - 1000 requests per minute per API key
-
-
-    ## Support
-
-    For technical support, please contact our API team.
-
-    '
-  version: 1.0.0
+  title: Wunderkind Identity API
+  version: '1.0'
+  description: 'Operations tagged Identity across 2 of this provider''s published API definitions: wunderkind-event-ingestion-openapi.yml, wunderkind-identity-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
+- url: //api.wunderkind.co
 - url: https://api.wunderkind.co
-  description: Production server
+  description: Identity API
 tags:
 - name: Identity
 paths:
@@ -167,6 +143,10 @@ paths:
         - shell
       tags:
       - Identity
+      summary: Get v1identitylookup
+      x-summary-source: derived
+    servers:
+    - url: //api.wunderkind.co
   /v1/identity/lookup:
     servers:
     - url: https://localhost:8081
@@ -303,10 +283,8 @@ paths:
         - shell
       tags:
       - Identity
-components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Bearer token authentication
+      summary: Post v1identitylookup
+      x-summary-source: derived
+x-refined-from:
+- wunderkind-event-ingestion-openapi.yml
+- wunderkind-identity-openapi.yml

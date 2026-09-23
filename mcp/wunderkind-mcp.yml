@@ -61,18 +61,7 @@ tools:
   source_operation: openapi/wunderkind-event-ingestion-openapi.yml#Service_AppPushTokenSet
 deployment:
   mode: none
-  auth: unknown
   verified: derived
   tools: 16
-  checked: '2026-08-13'
-  source: catalog MCP census + re-search 2026-08-13
-  note: >-
-    Nobody ships a Wunderkind MCP server. No hosted/remote endpoint and no
-    stdio package exist: the official MCP registry returns zero results for
-    "wunderkind", npm has no first-party Wunderkind MCP package, and the
-    developer portal llms.txt (re-fetched 2026-08-13) lists no MCP surface.
-    endpoint/install are deliberately empty — the tools[] below are a CANDIDATE
-    surface derived one-per-operationId from the harvested OpenAPI, not a
-    reachable agent surface. No ToolCrosswalk artifact is emitted because there
-    is no published MCP tool list to bind against; a crosswalk here would be a
-    1:1 restatement of the derivation above.
+  checked: '2026-08-12'
+  source: catalog MCP census
