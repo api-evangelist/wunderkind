@@ -140,26 +140,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          description: Error details object
-          properties:
-            message:
-              type: string
-              description: Error type or code
-              example: InvalidApiKey
-            detail:
-              type: string
-              description: Human-readable error message with additional context
-              example: Please provide valid API key in the apikey query parameter.
-          required:
-          - message
-          - detail
-      required:
-      - error
     EmailRequest:
       type: object
       required:
@@ -201,6 +181,26 @@ components:
           type: string
           description: Email body content (HTML or plain text)
           example: <html><body>Hello, World!</body></html>
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          description: Error details object
+          properties:
+            message:
+              type: string
+              description: Error type or code
+              example: InvalidApiKey
+            detail:
+              type: string
+              description: Human-readable error message with additional context
+              example: Please provide valid API key in the apikey query parameter.
+          required:
+          - message
+          - detail
+      required:
+      - error
     EmailResponse:
       type: object
       required:

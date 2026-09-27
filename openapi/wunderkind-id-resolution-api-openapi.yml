@@ -212,7 +212,7 @@ paths:
   //id-resolution/v1/identity/enckey:
     get:
       description: ''
-      operationId: get_id-resolutionv1identityenckey
+      operationId: getIdResolutionV1IdentityEnckey
       responses:
         '200':
           description: ''
@@ -221,6 +221,8 @@ paths:
       - Id Resolution
       summary: Get id resolutionv1identityenckey
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: get_id-resolutionv1identityenckey
     servers:
     - url: //api.wunderkind.co
 x-refined-from:
