@@ -140,6 +140,43 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    EmailResponse:
+      type: object
+      required:
+      - status_code
+      - message
+      properties:
+        status_code:
+          type: string
+          description: Status code indicating the result of the email send operation
+          example: Success
+          enum:
+          - Success
+          - Error
+        message:
+          type: string
+          description: Human-readable message describing the result
+          example: Emails sent successfully
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          description: Error details object
+          properties:
+            message:
+              type: string
+              description: Error type or code
+              example: InvalidApiKey
+            detail:
+              type: string
+              description: Human-readable error message with additional context
+              example: Please provide valid API key in the apikey query parameter.
+          required:
+          - message
+          - detail
+      required:
+      - error
     EmailRequest:
       type: object
       required:
@@ -181,43 +218,6 @@ components:
           type: string
           description: Email body content (HTML or plain text)
           example: <html><body>Hello, World!</body></html>
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          description: Error details object
-          properties:
-            message:
-              type: string
-              description: Error type or code
-              example: InvalidApiKey
-            detail:
-              type: string
-              description: Human-readable error message with additional context
-              example: Please provide valid API key in the apikey query parameter.
-          required:
-          - message
-          - detail
-      required:
-      - error
-    EmailResponse:
-      type: object
-      required:
-      - status_code
-      - message
-      properties:
-        status_code:
-          type: string
-          description: Status code indicating the result of the email send operation
-          example: Success
-          enum:
-          - Success
-          - Error
-        message:
-          type: string
-          description: Human-readable message describing the result
-          example: Emails sent successfully
   securitySchemes:
     BearerAuth:
       type: http
