@@ -140,23 +140,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    EmailResponse:
-      type: object
-      required:
-      - status_code
-      - message
-      properties:
-        status_code:
-          type: string
-          description: Status code indicating the result of the email send operation
-          example: Success
-          enum:
-          - Success
-          - Error
-        message:
-          type: string
-          description: Human-readable message describing the result
-          example: Emails sent successfully
     ErrorResponse:
       type: object
       properties:
@@ -177,6 +160,23 @@ components:
           - detail
       required:
       - error
+    EmailResponse:
+      type: object
+      required:
+      - status_code
+      - message
+      properties:
+        status_code:
+          type: string
+          description: Status code indicating the result of the email send operation
+          example: Success
+          enum:
+          - Success
+          - Error
+        message:
+          type: string
+          description: Human-readable message describing the result
+          example: Emails sent successfully
     EmailRequest:
       type: object
       required:
