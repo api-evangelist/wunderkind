@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/wunderkind/integrations
+- https://n8n.io/integrations/wunderkind/
+- https://composio.dev/toolkits/wunderkind
+- https://monid.ai/tools/wunderkind
+checked:
+- https://composio.dev/toolkits/wunderkind
+- https://monid.ai/tools/wunderkind
+- https://n8n.io/integrations/wunderkind/
+- https://zapier.com/apps/wunderkind/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
