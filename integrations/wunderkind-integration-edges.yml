@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/wunderkind/integrations
 - https://n8n.io/integrations/wunderkind/
@@ -9,8 +9,43 @@ checked:
 - https://composio.dev/toolkits/wunderkind
 - https://monid.ai/tools/wunderkind
 - https://n8n.io/integrations/wunderkind/
+- https://vendor-list.consensu.org/v3/vendor-list.json
 - https://zapier.com/apps/wunderkind/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: IAB Europe TCF Global Vendor List
+  partner: null
+  partner_match: domain
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://vendor-list.consensu.org/v3/vendor-list.json
+  contract_reference:
+    register: IAB Europe TCF Global Vendor List
+    spec_file: null
+    role: tcf-vendor
+    registered_name: Wunderkind Corporation
+    register_id: '256'
+    products:
+    - Wunderkind Corporation
+    matched_domain: wunderkind.co
+    api_families:
+    - feature-1
+    - feature-2
+    - purpose-1
+    - purpose-10
+    - purpose-2
+    - purpose-3
+    - purpose-4
+    - purpose-7
+    - purpose-9
+    - special-purpose-1
+    - special-purpose-2
+    api_families_basis: TCF purposes, special purposes, features and special features declared on the registration
+    detected_by: sweep-adtech.py
+    detected: '2026-10-14'
+  detected_by: sweep-adtech.py
+  detected: '2026-10-14'
 templates: []
